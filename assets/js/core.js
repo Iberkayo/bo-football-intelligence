@@ -131,35 +131,6 @@ window.BO = window.BO || {};
 (function () {
   const u = BO.util;
   const ui = {};
-  let uid = 0;
-
-  /* ---------- SVG kalkan arma ---------- */
-  const SHIELD = "M24 2 L44 8 V24 C44 37 35 44 24 47 C13 44 4 37 4 24 V8 Z";
-  ui.crest = function (teamId, size) {
-    const t = u.team(teamId);
-    const id = "cr" + ++uid;
-    let pattern = "";
-    if (t.pat === "halves") pattern = '<rect x="24" y="0" width="24" height="48" fill="' + t.c2 + '"/>';
-    else if (t.pat === "stripes")
-      pattern = [10, 22, 34].map((x) => '<rect x="' + x + '" y="0" width="6" height="48" fill="' + t.c2 + '"/>').join("");
-    else if (t.pat === "sash") pattern = '<path d="M-4 10 L10 -4 L52 38 L38 52 Z" fill="' + t.c2 + '"/>';
-    else if (t.pat === "band") pattern = '<rect x="0" y="17" width="48" height="10" fill="' + t.c2 + '"/>';
-    const len = t.short.length;
-    const fs = len <= 2 ? 14 : len === 3 ? 11.5 : 9.5;
-    const w = len * fs * 0.68 + 8;
-    return (
-      '<span class="crest crest--' + (size || "md") + '" role="img" aria-label="' + u.esc(t.name) + ' arması">' +
-      '<svg viewBox="0 0 48 48"><defs><clipPath id="' + id + '"><path d="' + SHIELD + '"/></clipPath>' +
-      '<linearGradient id="' + id + 'g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/>' +
-      '<stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".28"/></linearGradient></defs>' +
-      '<g clip-path="url(#' + id + ')"><rect width="48" height="48" fill="' + t.c1 + '"/>' + pattern +
-      '<rect width="48" height="48" fill="url(#' + id + 'g)"/></g>' +
-      '<path d="' + SHIELD + '" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.4"/>' +
-      '<rect x="' + (24 - w / 2) + '" y="' + (24.5 - fs * 0.65) + '" width="' + w + '" height="' + fs * 1.3 + '" rx="' + fs * 0.4 + '" fill="rgba(6,10,19,.74)"/>' +
-      '<text x="24" y="' + (24.5 + fs * 0.36) + '" text-anchor="middle" font-family="Manrope,Inter,sans-serif" font-weight="800" font-size="' + fs + '" fill="#fff">' + u.esc(t.short) + "</text>" +
-      "</svg></span>"
-    );
-  };
 
   ui.leagueMark = function (leagueId) {
     const l = u.league(leagueId);
@@ -211,9 +182,9 @@ window.BO = window.BO || {};
       '<div class="match-card__top"><span class="match-card__league">' + ui.leagueMark(m.league) + "<span>" + u.esc(l.short) + "</span></span>" +
       '<span class="tag tag--sample">Örnek gösterim</span></div>' +
       '<div class="match-card__teams">' +
-      '<div class="mc-team">' + ui.crest(m.home, "md") + '<span class="mc-team__name">' + u.esc(h.name) + "</span></div>" +
+      '<div class="mc-team">' + '<span class="mc-team__name">' + u.esc(h.name) + "</span></div>" +
       '<div class="mc-center"><span class="mc-center__time">' + m.time + '</span><span class="mc-center__day">' + u.dayName(m.day) + "</span></div>" +
-      '<div class="mc-team">' + ui.crest(m.away, "md") + '<span class="mc-team__name">' + u.esc(a.name) + "</span></div></div>" +
+      '<div class="mc-team">' + '<span class="mc-team__name">' + u.esc(a.name) + "</span></div></div>" +
       ui.prob(m, { short: true }) +
       '<div class="match-card__foot">' + ui.verdictLine(m) + '<span class="match-card__go" aria-hidden="true">' + BO.icon("arrowR") + "</span></div>" +
       "</a>"
@@ -227,8 +198,8 @@ window.BO = window.BO || {};
       '<a class="match-row" href="' + ui.detailHref(m) + '" aria-label="' + u.esc(h.name + " – " + a.name + ", " + m.time + ". Maç detayını aç") + '">' +
       '<span class="match-row__time">' + m.time + "</span>" +
       '<span class="match-row__teams">' +
-      '<span class="match-row__team">' + ui.crest(m.home, "xs") + "<span>" + u.esc(h.name) + "</span></span>" +
-      '<span class="match-row__team">' + ui.crest(m.away, "xs") + "<span>" + u.esc(a.name) + "</span></span></span>" +
+      '<span class="match-row__team">' + "<span>" + u.esc(h.name) + "</span></span>" +
+      '<span class="match-row__team">' + "<span>" + u.esc(a.name) + "</span></span></span>" +
       ui.prob(m, { short: true }) +
       '<span class="match-row__go" aria-hidden="true">' + BO.icon("chevR") + "</span></a>"
     );
