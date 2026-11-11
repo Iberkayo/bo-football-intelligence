@@ -65,21 +65,6 @@
 .tag--ok { background: var(--ok-soft); color: var(--ok); }
 .tag--bad { background: var(--bad-soft); color: var(--bad); }
 
-/* ---------- Takım arması (SVG kalkan) ---------- */
-.crest {
-  --size: 40px;
-  width: var(--size);
-  height: var(--size);
-  flex-shrink: 0;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.35));
-}
-.crest svg { width: 100%; height: 100%; }
-.crest--xs { --size: 24px; }
-.crest--sm { --size: 32px; }
-.crest--md { --size: 44px; }
-.crest--lg { --size: 72px; }
-.crest--xl { --size: clamp(76px, 10vw, 112px); }
-
 /* ---------- Lig rozeti ---------- */
 .league-mark {
   display: inline-grid;
