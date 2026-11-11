@@ -57,8 +57,11 @@ eq("oran %61,9", ((BO.BACKTEST.correct / BO.BACKTEST.total) * 100).toFixed(1).re
 const missing = BO.MATCHES.concat(BO.PAST_SAMPLES).filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
 eq("eksik takım/lig yok", missing.length, 0);
 
-// 7) Arma SVG üretimi
-eq("arma SVG", /<svg viewBox="0 0 48 48">/.test(BO.ui.crest("gala")), true);
+// 7) Takım armaları yerine okunur takım adları
+const card = BO.ui.matchCard(BO.MATCHES[0], 0);
+eq("takım armaları kaldırıldı", /class="crest\b/.test(card), false);
+eq("ev sahibi adı görünür", card.includes("Arsenal"), true);
+eq("deplasman adı görünür", card.includes("Chelsea"), true);
 
 console.log(fail ? "\n" + fail + " test BAŞARISIZ" : "\nTüm testler geçti");
 process.exit(fail ? 1 : 0);
