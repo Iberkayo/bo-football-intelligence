@@ -23,9 +23,9 @@
     '<span class="tag tag--sample">Örnek gösterim</span></div>' +
     '<h1 class="sr-only" id="match-title">' + u.esc(h.name + " – " + a.name) + " maç analizi</h1>" +
     '<div class="match-hero__teams">' +
-    '<div class="hero-team">' + ui.crest(m.home, "xl") + '<span class="hero-team__name">' + u.esc(h.name) + '</span><span class="hero-team__role">Ev sahibi</span></div>' +
+    '<div class="hero-team">' + '<span class="hero-team__name">' + u.esc(h.name) + '</span><span class="hero-team__role">Ev sahibi</span></div>' +
     '<div class="hero-center"><span class="hero-center__time">' + m.time + '</span><span class="hero-center__label">Maç başlangıcı</span></div>' +
-    '<div class="hero-team">' + ui.crest(m.away, "xl") + '<span class="hero-team__name">' + u.esc(a.name) + '</span><span class="hero-team__role">Deplasman</span></div>' +
+    '<div class="hero-team">' + '<span class="hero-team__name">' + u.esc(a.name) + '</span><span class="hero-team__role">Deplasman</span></div>' +
     "</div>" +
     '<div class="match-hero__prob">' + ui.prob(m, { lg: true }) + "</div>" +
     '<div class="match-hero__verdict"><span class="verdict-pill' + (v.even ? " is-even" : "") + '">' + BO.icon(v.even ? "scale" : "trend") + u.esc(v.text) + "</span></div>" +
