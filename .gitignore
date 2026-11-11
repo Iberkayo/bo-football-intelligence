@@ -8,3 +8,12 @@ dist/
 coverage/
 *.log
 .DS_Store
+node_modules/
+dist/
+.next/
+.env
+.env.*
+!.env.example
+.vercel/
+coverage/
+*.log
