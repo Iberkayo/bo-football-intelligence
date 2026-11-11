@@ -1,0 +1,71 @@
+/* =========================================================
+   BO Hakkında sayfası
+   ========================================================= */
+.about-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--s-7);
+  align-items: center;
+}
+.about-hero h1 { margin-top: 14px; font-size: clamp(2rem, 1.3rem + 3vw, 3.5rem); }
+.about-hero .lead { margin-top: 16px; }
+.about-hero__actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 26px; }
+.about-visual {
+  position: relative;
+  aspect-ratio: 1.15;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line-2);
+  background:
+    radial-gradient(400px 300px at 50% 40%, rgba(79, 140, 255, 0.14), transparent 70%),
+    linear-gradient(160deg, var(--surface-2), var(--bg-2));
+  overflow: hidden;
+}
+.about-visual > svg { width: 100%; height: 100%; }
+
+.translate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.translate__box { padding: 22px; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
+.translate__box--bad { background: var(--bg-2); }
+.translate__box--good { border-color: rgba(198, 244, 50, 0.3); background: linear-gradient(160deg, rgba(198, 244, 50, 0.06), var(--surface)); }
+.translate__box .tag { margin-bottom: 14px; }
+.translate__box code { display: block; font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 0.875rem; color: var(--text-3); line-height: 1.8; }
+.translate__box p { font-size: 1.0625rem; font-weight: 600; color: var(--text); }
+.translate__box p + p { margin-top: 8px; font-weight: 500; font-size: 0.9375rem; color: var(--text-2); }
+.translate__arrow { display: grid; place-items: center; color: var(--brand); }
+.translate__arrow svg { width: 28px; height: 28px; }
+
+.faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.faq-card { padding: 24px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--line); }
+.faq-card--wide { grid-column: 1 / -1; }
+.faq-card__icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: var(--r-md); background: var(--surface-3); color: var(--text); }
+.faq-card__icon svg { width: 20px; height: 20px; }
+.faq-card h3 { margin-top: 16px; font-size: 1.125rem; }
+.faq-card p { margin-top: 8px; font-size: 0.9375rem; color: var(--text-2); }
+.faq-card p + p { margin-top: 10px; }
+
+.compare-table { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.compare-col { padding: 18px; border-radius: var(--r-md); background: var(--bg-2); border: 1px solid var(--line); }
+.compare-col h4 { display: flex; align-items: center; gap: 8px; font-size: 0.9375rem; }
+.compare-col ul { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; font-size: 0.875rem; color: var(--text-2); }
+.compare-col li { display: flex; gap: 10px; }
+.compare-col li svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 3px; color: var(--text-3); }
+
+.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.product { position: relative; padding: 24px; border-radius: var(--r-lg); border: 1px solid var(--line); background: var(--surface); }
+.product.is-live { border-color: rgba(198, 244, 50, 0.3); background: linear-gradient(160deg, rgba(198, 244, 50, 0.06), var(--surface)); }
+.product.is-soon { border-style: dashed; background: transparent; }
+.product__name { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+.product.is-soon .product__name { color: var(--text-2); }
+.product p { margin-top: 8px; font-size: 0.9375rem; color: var(--text-2); }
+
+@media (max-width: 900px) {
+  .about-hero { grid-template-columns: 1fr; gap: var(--s-6); }
+  .about-visual { aspect-ratio: 1.5; }
+  .translate { grid-template-columns: 1fr; }
+  .translate__arrow svg { transform: rotate(90deg); }
+  .faq-grid, .compare-table, .products { grid-template-columns: 1fr; }
+}

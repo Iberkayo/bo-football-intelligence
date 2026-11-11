@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060a13">
+<meta name="description" content="BO Football Intelligence nedir, futbol olasılıkları nasıl hesaplanır ve neden kesin sonuç değildir?">
+<title>BO Hakkında — BO Football Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/shell.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/about.css">
+</head>
+<body data-page="hakkinda">
+<a class="skip-link" href="#icerik">İçeriğe geç</a>
+<header class="site-header" id="site-header"></header>
+
+<main id="icerik" class="page">
+  <div class="container">
+
+    <section class="about-hero" aria-labelledby="about-title">
+      <div>
+        <span class="eyebrow">BO Football Intelligence</span>
+        <h1 id="about-title">Karmaşık hesaplar arka planda. Önünüzde yalnızca futbol.</h1>
+        <p class="lead">BO, futbol karşılaşmalarını istatistiksel modeller ve yapay zekâ ile analiz eder; sonucu herkesin anlayacağı sade bir dille sunar. İlk ürünümüz BO-BET, her maç için üç sonucun ihtimalini gösterir.</p>
+        <div class="about-hero__actions">
+          <a class="btn btn--primary" href="index.html">Bugünün maçlarına bak</a>
+          <a class="btn btn--ghost" href="gecmis-tahminler.html">Geçmiş testleri incele</a>
+        </div>
+      </div>
+      <div class="about-visual" aria-hidden="true">
+        <svg viewBox="0 0 440 380" fill="none">
+          <!-- Saha -->
+          <rect x="30" y="30" width="380" height="320" rx="16" stroke="rgba(148,163,184,.18)"/>
+          <path d="M220 30v320" stroke="rgba(148,163,184,.18)"/>
+          <circle cx="220" cy="190" r="54" stroke="rgba(148,163,184,.18)"/>
+          <rect x="30" y="120" width="60" height="140" stroke="rgba(148,163,184,.14)"/>
+          <rect x="350" y="120" width="60" height="140" stroke="rgba(148,163,184,.14)"/>
+          <!-- Veri noktaları -->
+          <g fill="#4f8cff" opacity=".85"><circle cx="110" cy="90" r="4"/><circle cx="150" cy="150" r="4"/><circle cx="96" cy="230" r="4"/><circle cx="170" cy="280" r="4"/><circle cx="130" cy="190" r="5"/></g>
+          <g fill="#2cd3c1" opacity=".85"><circle cx="330" cy="100" r="4"/><circle cx="290" cy="170" r="4"/><circle cx="340" cy="250" r="4"/><circle cx="276" cy="290" r="4"/><circle cx="310" cy="210" r="5"/></g>
+          <path d="M110 90 150 150 130 190 96 230M130 190 170 280" stroke="#4f8cff" stroke-opacity=".35"/>
+          <path d="M330 100 290 170 310 210 340 250M310 210 276 290" stroke="#2cd3c1" stroke-opacity=".35"/>
+          <!-- Olasılık kartı -->
+          <g transform="translate(120 152)">
+            <rect width="200" height="84" rx="14" fill="#0e1525" stroke="rgba(148,163,184,.3)"/>
+            <text x="16" y="26" fill="#8591a6" font-family="Inter,sans-serif" font-size="11" font-weight="600">BO olasılıkları</text>
+            <rect x="16" y="38" width="80" height="8" rx="4" fill="#4f8cff"/>
+            <rect x="99" y="38" width="44" height="8" rx="2" fill="#93a0b8" opacity=".7"/>
+            <rect x="146" y="38" width="38" height="8" rx="4" fill="#2cd3c1"/>
+            <text x="16" y="70" fill="#eaf0fa" font-family="Manrope,sans-serif" font-size="15" font-weight="800">%48</text>
+            <text x="100" y="70" text-anchor="middle" fill="#a6b1c4" font-family="Manrope,sans-serif" font-size="15" font-weight="800">%27</text>
+            <text x="184" y="70" text-anchor="end" fill="#a6b1c4" font-family="Manrope,sans-serif" font-size="15" font-weight="800">%25</text>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="t-translate">
+      <div class="section-head"><div><h2 id="t-translate">Teknik dili futbol diline çeviriyoruz</h2><p>Aynı bilgiyi iki farklı şekilde söylemek mümkün. BO her zaman ikincisini seçer.</p></div></div>
+      <div class="translate">
+        <div class="translate__box translate__box--bad">
+          <span class="tag">Veri bilimi paneli</span>
+          <code>Ridge Poisson · Log Loss 0.9049<br>λ_ev = 1.62 · λ_dep = 1.08<br>argmax(P) = H</code>
+        </div>
+        <div class="translate__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <div class="translate__box translate__box--good">
+          <span class="tag tag--brand">BO-BET</span>
+          <p>Arsenal daha avantajlı görünüyor.</p>
+          <p>Arsenal kazanır %48 · Beraberlik %27 · Chelsea kazanır %25</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="t-faq">
+      <div class="section-head"><div><h2 id="t-faq">Merak edilenler</h2><p>BO’yu kullanmak için istatistik bilmeniz gerekmez. Yine de nasıl çalıştığını açıkça anlatmak istiyoruz.</p></div></div>
+      <div class="faq-grid">
+        <article class="faq-card">
+          <span class="faq-card__icon" data-icon="compass"></span>
+          <h3>BO Football Intelligence nedir?</h3>
+          <p>Futbol karşılaşmalarını veriyle analiz eden bir platform. Amacımız bir maçta hangi takımın daha avantajlı olduğunu ve her sonucun ne kadar olası olduğunu sade bir dille göstermek.</p>
+          <p>BO-BET ilk ürünümüz. Oyuncu analizleri için BO-Scout, veriye dayalı futbol hikâyeleri için BO-Stories ileride aynı çatı altında yer alacak.</p>
+        </article>
+        <article class="faq-card">
+          <span class="faq-card__icon" data-icon="scale"></span>
+          <h3>Futbol olasılıkları neden önemlidir?</h3>
+          <p>“Favori kazanır” demek kolaydır, ama ne kadar favori? %48 ile %70 arasında büyük fark vardır. Olasılıklar bir maçın ne kadar dengeli ya da tek taraflı olduğunu tek bakışta anlatır ve beklentilerinizi gerçekçi tutar.</p>
+        </article>
+        <article class="faq-card">
+          <span class="faq-card__icon" data-icon="layers"></span>
+          <h3>Tahminler nasıl oluşturulur?</h3>
+          <p>BO, takımların geçmiş performanslarını ve maç istatistiklerini değerlendirir. Bu bilgilerden ev sahibi galibiyeti, beraberlik ve deplasman galibiyeti için birer ihtimal hesaplar. Üç yüzdenin toplamı her zaman %100’dür.</p>
+          <p>Hesaplamalar arka planda çalışır; ekranda yalnızca sonucu ve kısa bir değerlendirmeyi görürsünüz.</p>
+        </article>
+        <article class="faq-card">
+          <span class="faq-card__icon" data-icon="dice"></span>
+          <h3>Tahminler neden kesin sonuç değildir?</h3>
+          <p>%48 ihtimal “kazanacak” anlamına gelmez: aynı maç 100 kez oynansa o takım yaklaşık 52’sinde kazanamaz. Tek bir gol, bir kırmızı kart ya da bir sakatlık her şeyi değiştirebilir. BO’nun yüzdeleri garanti değil, ihtimaldir.</p>
+        </article>
+        <article class="faq-card faq-card--wide" id="canli">
+          <span class="faq-card__icon" data-icon="history"></span>
+          <h3>Geçmiş testler ve canlı tahminler arasındaki fark nedir?</h3>
+          <p>İkisi aynı şey değildir. BO bunları her zaman ayrı gösterir.</p>
+          <div class="compare-table">
+            <div class="compare-col">
+              <h4><span class="tag">Geçmiş test</span></h4>
+              <ul>
+                <li><span data-icon="check"></span>Sonucu zaten bilinen maçlar üzerinde yapılır.</li>
+                <li><span data-icon="check"></span>Yöntemin işe yarayıp yaramadığını ölçer.</li>
+                <li><span data-icon="check"></span>2–8 Kasım 2026: 63 maçta 39 doğru seçim (%61,9).</li>
+              </ul>
+            </div>
+            <div class="compare-col">
+              <h4><span class="tag tag--brand">Canlı tahmin</span></h4>
+              <ul>
+                <li><span data-icon="clock"></span>Henüz oynanmamış maçlar için, maçtan önce yayınlanır.</li>
+                <li><span data-icon="clock"></span>Gerçek performans ancak zamanla, yeterli maç biriktikçe ölçülür.</li>
+                <li><span data-icon="clock"></span>Şu anda yayında değil; sitedeki maç yüzdeleri örnek gösterimdir.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="t-family">
+      <div class="section-head"><div><h2 id="t-family">BO ürün ailesi</h2><p>Tek bir marka, futbolu farklı açılardan anlatan ürünler.</p></div></div>
+      <div class="products">
+        <div class="product is-live"><div class="product__name">BO-BET <span class="tag tag--brand">Şimdi</span></div><p>Maç sonucu olasılıkları ve sade değerlendirmeler.</p></div>
+        <div class="product is-soon"><div class="product__name">BO-Scout <span class="tag tag--draft">Yakında</span></div><p>Oyuncu ve takım profillerine veriyle bakış.</p></div>
+        <div class="product is-soon"><div class="product__name">BO-Stories <span class="tag tag--draft">Yakında</span></div><p>Rakamların arkasındaki futbol hikâyeleri.</p></div>
+      </div>
+    </section>
+
+    <div class="notice" style="margin-top:var(--s-7)" role="note">
+      <span data-icon="info"></span>
+      <div>BO bir bahis hizmeti değildir; para kazancı ya da başarı garantisi vaat etmez. Gösterilen tüm yüzdeler bilgi amaçlı olasılıklardır.</div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<nav class="bottom-nav" id="bottom-nav" aria-label="Alt menü"></nav>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/core.js"></script>
+<script>
+  BO.shell();
+  // data-icon yer tutucularını SVG ikonlarla değiştir
+  document.querySelectorAll("[data-icon]").forEach(function (el) {
+    var svg = BO.icon(el.dataset.icon);
+    if (el.classList.contains("faq-card__icon")) el.innerHTML = svg;
+    else el.outerHTML = svg;
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+/* =========================================================
+   BO Football Intelligence — Tasarım sistemi
+   1) Değişkenler  2) Temel  3) Yerleşim  4) Kabuk (üst menü, alt menü, altbilgi)
+   ========================================================= */
+
+:root {
+  /* Yüzeyler: derin lacivert → antrasit */
+  --bg: #060a13;
+  --bg-2: #0a101d;
+  --surface: #0e1525;
+  --surface-2: #131b2e;
+  --surface-3: #1b2439;
+  --line: rgba(148, 163, 184, 0.12);
+  --line-2: rgba(148, 163, 184, 0.22);
+
+  /* Metin (koyu zeminde AA kontrast) */
+  --text: #eaf0fa;
+  --text-2: #a6b1c4;
+  --text-3: #8591a6;
+
+  /* Marka: sinyal lime — yalnızca marka, etkin durum ve ana eylem */
+  --brand: #c6f432;
+  --brand-hover: #d6fb63;
+  --brand-ink: #0b1300;
+  --brand-soft: rgba(198, 244, 50, 0.12);
+
+  /* Sonuç renkleri: kazan/kaybet çağrışımı yapmayan nötr üçlü */
+  --home: #4f8cff;
+  --draw: #93a0b8;
+  --away: #2cd3c1;
+  --home-soft: rgba(79, 140, 255, 0.14);
+  --draw-soft: rgba(147, 160, 184, 0.14);
+  --away-soft: rgba(44, 211, 193, 0.14);
+
+  /* Durum */
+  --ok: #4ade80;
+  --bad: #fb7185;
+  --warn: #fbbf24;
+  --ok-soft: rgba(74, 222, 128, 0.12);
+  --bad-soft: rgba(251, 113, 133, 0.12);
+  --warn-soft: rgba(251, 191, 36, 0.12);
+
+  --font-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  --shadow-1: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 14px 34px -16px rgba(0, 0, 0, 0.7);
+  --shadow-3: 0 30px 70px -30px rgba(0, 0, 0, 0.85);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --t-fast: 150ms;
+  --t-med: 260ms;
+
+  --header-h: 68px;
+  --bottom-h: 66px;
+  --container: 1240px;
+}
+
+/* ---------- Temel ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--bg);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 480px at 88% -10%, rgba(79, 140, 255, 0.13), transparent 60%),
+    radial-gradient(700px 420px at -8% 0%, rgba(44, 211, 193, 0.07), transparent 60%),
+    radial-gradient(800px 360px at 50% 115%, rgba(198, 244, 50, 0.04), transparent 60%);
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+::selection {
+  background: rgba(198, 244, 50, 0.28);
+  color: #fff;
+}
+[hidden] {
+  display: none !important;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: var(--r-sm);
+  background: var(--brand);
+  color: var(--brand-ink);
+  font-weight: 700;
+}
+.skip-link:focus {
+  top: 12px;
+}
+
+/* ---------- Tipografi ---------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.75rem);
+  font-weight: 800;
+}
+h2 {
+  font-size: clamp(1.3rem, 1.05rem + 1vw, 1.75rem);
+}
+h3 {
+  font-size: 1.0625rem;
+}
+p {
+  text-wrap: pretty;
+}
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--brand);
+}
+.lead {
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  color: var(--text-2);
+  max-width: 62ch;
+}
+.muted {
+  color: var(--text-3);
+}
+
+/* ---------- Yerleşim ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 32px);
+}
+.page {
+  padding-block: var(--s-6) var(--s-8);
+}
+.section {
+  margin-top: var(--s-8);
+}
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--s-5);
+}
+.section-head p {
+  margin-top: 6px;
+  max-width: 62ch;
+  font-size: 0.975rem;
+  color: var(--text-2);
+}
