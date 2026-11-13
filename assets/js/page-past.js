@@ -41,8 +41,19 @@
     '<span class="outcome"><i class="' + ["h", "d", "a"][i] + '"></i><span>' +
     u.esc(u.outcomeLabel(i, r)) + '</span></span>';
 
+  // Betimleyici belirsizlik etiketi: en yüksek iki olasılığın farkı.
+  // Kalibrasyon/güven aralığı değildir, modelin sınıf seçimini değiştirmez.
+  const pct = n => (n * 100).toLocaleString("tr-TR", { maximumFractionDigits: 1 });
+  const balance = probabilities => {
+    const sorted = [...probabilities].sort((a, b) => b - a);
+    const gap = sorted[0] - sorted[1];
+    return gap <= 0.06 + 1e-10 ? "Çok dengeli" : gap <= 0.15 + 1e-10 ? "Dengeli" : "";
+  };
   function rowHTML(r) {
     const h = u.team(r.home), a = u.team(r.away);
+    const tier = balance(r.p);
+    const pickText = r.pick === 1 ? "Beraberlik" : (r.pick === 0 ? h.name : a.name) + " galibiyeti";
+    const split = "1 %" + pct(r.p[0]) + " · X %" + pct(r.p[1]) + " · 2 %" + pct(r.p[2]);
     return '<article class="past-row" aria-label="' +
       u.esc(h.name + ' ' + r.score[0] + ', ' + a.name + ' ' + r.score[1] +
       '. ' + (r.ok ? 'Doğru seçim' : 'Yanlış seçim')) + '">' +
@@ -51,8 +62,12 @@
       '</span><span class="past-row__teams"><span>' + u.esc(h.name) +
       '</span><span class="sep">–</span><span>' + u.esc(a.name) + '</span></span></div>' +
       '<div class="past-row__score"><span class="score">' + r.score[0] + ' – ' + r.score[1] + '</span></div>' +
-      '<div class="past-row__pick"><span class="cell-label">BO’nun seçimi</span>' +
-      outcome(r.pick, r) + '</div>' +
+      '<div class="past-row__pick"><span class="cell-label">En olası sonuç</span>' +
+      '<div class="past-pick__main">' + '<span class="past-pick__name">' + u.esc(pickText) +
+      ' <b>%' + pct(r.p[r.pick]) + '</b></span>' +
+      (tier ? '<span class="past-pick__tier">' + tier + '</span>' : '') + '</div>' +
+      '<span class="past-pick__prob" aria-label="Üç olasılık: ' + u.esc(split) + '">' +
+      u.esc(split) + '</span></div>' +
       '<div class="past-row__actual"><span class="cell-label">Gerçekleşen</span>' +
       outcome(r.actual, r) + '</div>' +
       '<div class="past-row__badge"><span class="result-badge result-badge--' +
@@ -98,7 +113,7 @@
         }
         const correct = filtered.filter(r => r.ok).length;
         list.innerHTML = '<div class="past-head" aria-hidden="true"><span>Maç</span>' +
-          '<span>Skor</span><span>BO’nun en olası gördüğü</span><span>Gerçekleşen</span>' +
+          '<span>Skor</span><span>En yüksek olasılık</span><span>Gerçekleşen</span>' +
           '<span>Sonuç</span></div>' +
           filtered.map(rowHTML).join('') +
           '<div class="past-foot"><span>' + filtered.length + ' gerçek test kaydı · ' +
