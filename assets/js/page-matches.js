@@ -74,8 +74,8 @@
       'aria-label="Günün öne çıkan maçı: ' + u.esc(h.name + " – " + a.name) + '. Maç detayını aç">' +
       '<div><div class="featured__meta"><span class="tag tag--brand">Günün maçı</span><span class="tag tag--sample">Örnek gösterim</span>' +
       "<span>" + u.esc(l.name) + " · " + u.dayName(m.day) + " " + m.time + "</span></div>" +
-      '<div class="featured__teams"><span class="featured__team">' + ui.crest(m.home, "lg") + "<strong>" + u.esc(h.name) + "</strong></span>" +
-      '<span class="featured__vs">–</span><span class="featured__team">' + ui.crest(m.away, "lg") + "<strong>" + u.esc(a.name) + "</strong></span></div>" +
+      '<div class="featured__teams"><span class="featured__team">' + "<strong>" + u.esc(h.name) + "</strong></span>" +
+      '<span class="featured__vs">–</span><span class="featured__team">' + "<strong>" + u.esc(a.name) + "</strong></span></div>" +
       '<div class="featured__verdict">' + BO.icon(v.even ? "scale" : "trend") + u.esc(v.text) + ".</div></div>" +
       '<div class="featured__right">' + ui.prob(m, { lg: true }) +
       '<span class="featured__cta">Maçın ayrıntılarına bak' + BO.icon("arrowR") + "</span></div></a>"

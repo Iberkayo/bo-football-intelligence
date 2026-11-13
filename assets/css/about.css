@@ -69,3 +69,10 @@
   .translate__arrow svg { transform: rotate(90deg); }
   .faq-grid, .compare-table, .products { grid-template-columns: 1fr; }
 }
+
+
+html[data-theme="light"] .translate__box--good,
+html[data-theme="light"] .product.is-live {
+  border-color: rgba(73, 108, 9, 0.25);
+  background: linear-gradient(160deg, rgba(185, 224, 68, 0.09), var(--surface));
+}

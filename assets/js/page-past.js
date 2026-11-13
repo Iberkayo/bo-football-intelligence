@@ -56,7 +56,7 @@
     return (
       '<article class="past-row" aria-label="' + u.esc(h.name + " " + r.score[0] + ", " + a.name + " " + r.score[1] + ". " + (r.ok ? "Doğru seçim" : "Yanlış seçim")) + '">' +
       '<div class="past-row__match"><span class="past-row__meta">' + ui.leagueMark(r.league) + u.esc(u.league(r.league).short) + " · " + u.isoShort(r.date) + "</span>" +
-      '<span class="past-row__teams">' + ui.crest(r.home, "xs") + "<span>" + u.esc(h.name) + '</span><span class="sep">–</span><span>' + u.esc(a.name) + "</span>" + ui.crest(r.away, "xs") + "</span></div>" +
+      '<span class="past-row__teams">' + "<span>" + u.esc(h.name) + '</span><span class="sep">–</span><span>' + u.esc(a.name) + "</span>" + "</span></div>" +
       '<div class="past-row__score"><span class="score">' + r.score[0] + " – " + r.score[1] + "</span></div>" +
       '<div class="past-row__pick"><span class="cell-label">BO’nun seçimi</span>' + outcome(r.pick, r) + "</div>" +
       '<div class="past-row__actual"><span class="cell-label">Gerçekleşen</span>' + outcome(r.actual, r) + "</div>" +
