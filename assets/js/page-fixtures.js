@@ -106,6 +106,7 @@
       u.esc(shortDate(Math.round((new Date(m.dateTR+"T00:00:00Z")-new Date(isoToday()+"T00:00:00Z"))/86400000)))+'</span></div>'+
       '<div class="mc-team"><span class="mc-team__name">'+u.esc(m.away)+'</span></div></div>'+
       (paperProb(m)?'<div class="fixture-card__prob">'+paperProb(m)+'</div>':"")+
+      (paper.byFixture.has(m.id)?BO.paperMarkets.rows(paper.byFixture.get(m.id)):"")+
       '<div class="fixture-card__foot">'+statusLine(m)+'<span class="fixture-card__note">'+
       u.esc(paperNote(m))+'</span></div></article>';
   }
