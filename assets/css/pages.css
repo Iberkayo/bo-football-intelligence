@@ -730,3 +730,57 @@ html[data-theme="light"] .draft {
 @media (max-width: 560px) {
   .fixture-row__paper { white-space: normal; }
 }
+
+/* Maç öncesi doğrulanmış Ridge PAPER öngörüleri; gerçek bookmaker fiyatı değildir. */
+.paper-markets {
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--bg-2);
+}
+.paper-markets > summary {
+  cursor: pointer;
+  padding: 11px 13px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 750;
+}
+.paper-markets > summary span {
+  color: var(--text-3);
+  font-size: 0.71rem;
+  font-weight: 600;
+}
+.paper-markets__caption {
+  margin: 0 13px 10px;
+  color: var(--text-3);
+  font-size: 0.74rem;
+  line-height: 1.45;
+}
+.paper-markets__list { padding: 0 13px 13px; display: grid; gap: 8px; }
+.paper-market {
+  display: grid;
+  gap: 6px;
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+.paper-market__name { color: var(--text-2); font-size: 0.76rem; font-weight: 700; }
+.paper-market__options { display: flex; flex-wrap: wrap; gap: 5px; }
+.paper-market__option {
+  font-size: 0.72rem;
+  color: var(--text);
+  border-radius: var(--r-sm);
+  padding: 5px 7px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+.paper-market__option b { font-weight: 700; }
+.paper-market__option small { color: var(--text-3); font-size: 0.69rem; margin-left: 4px; }
+@media (max-width: 560px) {
+  .paper-markets > summary { flex-wrap: wrap; }
+  .paper-market__option { font-size: 0.69rem; }
+}
