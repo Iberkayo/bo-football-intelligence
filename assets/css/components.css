@@ -373,3 +373,7 @@
     scroll-behavior: auto !important;
   }
 }
+
+
+html[data-theme="light"] .empty { background: rgba(237, 242, 248, 0.75); }
+html[data-theme="light"] .prob__seg--draw { opacity: 1; }
