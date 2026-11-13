@@ -32,25 +32,36 @@
     '<p class="match-hero__sub">' + u.esc(v.caution) + "</p>" +
     "</section>";
 
-  /* ---------- 100 maç görseli ---------- */
-  const dots = [];
-  [["h", p[0]], ["d", p[1]], ["a", p[2]]].forEach(([c, n]) => { for (let i = 0; i < n; i++) dots.push(c); });
+  /* ---------- Kompakt 100 maç dağılımı ---------- */
+  // Her kare bir olası maç: 10x10 mini harita, tam 100 hücre.
+  const tiles = [["h", p[0]], ["d", p[1]], ["a", p[2]]]
+    .map(([kind, count]) => Array.from({ length: count }, () =>
+      '<span class="hundred__tile hundred__tile--' + kind + '" aria-hidden="true"></span>').join(""))
+    .join("");
+  const stat = (kind, label, count) =>
+    '<div class="hundred-stat">' +
+    '<i class="hundred-stat__mark hundred-stat__mark--' + kind + '" aria-hidden="true"></i>' +
+    '<div class="hundred-stat__text"><span>' + u.esc(label) + '</span>' +
+    '<strong>' + count + ' <small>kez</small></strong></div></div>';
   const hundred =
-    '<section class="panel" aria-labelledby="h100">' +
+    '<section class="panel panel--hundred" aria-labelledby="h100">' +
     '<div class="panel__head"><div><h2 id="h100">Bu maç 100 kez oynansaydı</h2>' +
-    "<p>Yüzdeleri somutlaştırmanın kolay yolu: her nokta bir maç.</p></div></div>" +
-    '<div class="hundred" role="img" aria-label="' + u.esc("100 maçta: " + h.name + " kazanır " + p[0] + ", beraberlik " + p[1] + ", " + a.name + " kazanır " + p[2]) + '">' +
-    dots.map((c, i) => '<i class="' + c + '" style="animation-delay:' + i * 6 + 'ms"></i>').join("") + "</div>" +
-    '<div class="hundred-legend">' +
-    '<span><i style="background:var(--home)"></i>' + u.esc(h.name) + " kazanır <b>" + p[0] + "</b></span>" +
-    '<span><i style="background:var(--draw)"></i>Beraberlik <b>' + p[1] + "</b></span>" +
-    '<span><i style="background:var(--away)"></i>' + u.esc(a.name) + " kazanır <b>" + p[2] + "</b></span></div>" +
+    '<p>Her küçük kare bir olası maçı temsil ediyor.</p></div></div>' +
+    '<div class="hundred-layout">' +
+    '<div class="hundred" role="img" aria-label="' +
+    u.esc("100 maçta: " + h.name + " kazanır " + p[0] + ", beraberlik " + p[1] +
+      ", " + a.name + " kazanır " + p[2]) + '">' + tiles + '</div>' +
+    '<div class="hundred-stats">' +
+    stat("h", h.name + " kazanır", p[0]) +
+    stat("d", "Beraberlik", p[1]) +
+    stat("a", a.name + " kazanır", p[2]) +
     '<p class="hundred-note">' +
     (v.even
-      ? "Noktalar birbirine çok yakın dağılıyor: bu maçta hiçbir sonuç açık ara önde değil."
-      : "Öne çıkan " + u.esc(u.team(v.favIdx === 0 ? m.home : m.away).name) + " bile 100 maçın " + u.locSuffix(100 - p[v.favIdx]) + " kazanamıyor. Futbolda sürpriz her zaman mümkündür.") +
-    "</p>" +
-    "</section>";
+      ? "Hiçbir sonuç açık ara önde değil. Üç ihtimal de mümkün."
+      : u.esc(u.team(v.favIdx === 0 ? m.home : m.away).name) +
+        " öne çıksa da diğer sonuçların toplam ihtimali %" + (100 - p[v.favIdx]) + ".") +
+    '</p></div></div>' +
+    '</section>';
 
   /* ---------- Taslak analiz alanları (gerçek veri YOK) ---------- */
   const bar = (lw, label, rw) =>
