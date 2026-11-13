@@ -129,6 +129,15 @@ class PublisherTests(unittest.TestCase):
         with self.assertRaises(ForecastExportError):
             self.publish()
 
+    def test_tampered_previously_published_percentage_rejected(self):
+        self.insert()
+        old=self.publish()
+        old["forecasts"][0]["p"]=[0.90,0.05,0.05]
+        file=self.root/"forged-public.json"
+        file.write_text(json.dumps(old),encoding="utf-8")
+        with self.assertRaisesRegex(ForecastExportError,"previous public record changed"):
+            self.publish(existing=file)
+
     def test_previous_record_cannot_be_replaced_by_other_horizon(self):
         self.insert()
         old=self.publish()
