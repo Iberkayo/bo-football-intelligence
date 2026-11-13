@@ -681,3 +681,37 @@ html[data-theme="light"] .record-main {
 html[data-theme="light"] .draft {
   background: repeating-linear-gradient(135deg, rgba(38, 58, 83, 0.012) 0 10px, transparent 10px 20px), var(--bg-2);
 }
+
+
+/* Fikstür görünümü: tahmin olmayan maçlara olasılık uydurulmaz. */
+.fixture-card { cursor: default; }
+.fixture-card:hover { transform: none; }
+.fixture-card__foot {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 8px; padding-top: 13px; border-top: 1px solid var(--line);
+}
+.fixture-await {
+  display: inline-flex; align-items: center; min-height: 25px; padding: 3px 9px;
+  border-radius: var(--r-pill); color: var(--text-2); background: var(--draw-soft);
+  border: 1px solid var(--line); font-size: 0.75rem; font-weight: 650;
+}
+.fixture-card__note { color: var(--text-3); font-size: 0.75rem; }
+.fixture-row {
+  display: grid; align-items: center;
+  grid-template-columns: 64px minmax(0, 1fr) auto; gap: 18px;
+  padding: 15px 20px; min-height: 70px;
+}
+.fixture-row + .fixture-row { border-top: 1px solid var(--line); }
+.fixture-row__time { font-family: var(--font-display); font-size: 1rem; font-weight: 800; }
+.fixture-row__teams { min-width: 0; font-size: 0.9375rem; }
+.fixture-row__teams strong { font-weight: 650; }
+.fixture-row__teams small { display: block; margin-top: 4px; font-size: 0.75rem; color: var(--text-3); }
+.fixture-row__state { justify-self: end; }
+.live-empty.is-stale { border-color: var(--line-2); }
+.live-empty.is-stale .pulse-dot { background: var(--warn); }
+.live-empty.is-stale .pulse-dot::after { border-color: var(--warn); }
+@media (max-width: 640px) {
+  .fixture-row { grid-template-columns: 60px minmax(0,1fr); gap: 10px; }
+  .fixture-row__state { grid-column: 2; justify-self: start; }
+  .fixture-card__foot { align-items: flex-start; flex-direction: column; }
+}

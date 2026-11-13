@@ -1,0 +1,8 @@
+{
+  "schema": "bo-fixtures/v1",
+  "source": "API_FOOTBALL_SILVER",
+  "publication_state": "AWAITING_VERIFIED_REFRESH",
+  "snapshot_at_utc": null,
+  "coverage": null,
+  "fixtures": []
+}
