@@ -167,6 +167,36 @@ def export(*, ledger: Path, manifest: Path, fixtures_path: Path,
     manifest_root = Path(manifest).resolve().parent
     candidates = {}
     try:
+        # Append-only files must also be checked against the immutable ledger.
+        # Otherwise a manually altered public JSON might survive indefinitely.
+        for past in previous:
+            matching = conn.execute(
+                "SELECT record_json,frozen_at_utc,horizon FROM forecasts "
+                "WHERE record_sha256=? AND model_version=?",
+                (past["record_sha256"], CHAMPION)
+            ).fetchone()
+            require(matching is not None, "previous public record missing from ledger")
+            payload, ledger_time, horizon = matching
+            original = json.loads(payload)
+            bare = {k:v for k,v in original.items() if k != "record_sha256"}
+            require(digest(bare) == past["record_sha256"] and
+                    original.get("record_sha256") == past["record_sha256"],
+                    "previous public record digest failed")
+            require(past["fixture_id"] == f"api-football:fixture:{original['provider_fixture_id']}" and
+                    past["model_version"] == CHAMPION and
+                    past["horizon"] == horizon == original["horizon"] and
+                    past["frozen_at_utc"] == original["forecast_frozen_at_utc"] and
+                    utc(ledger_time) == utc(past["frozen_at_utc"]) and
+                    past["kickoff_utc"] == original["kickoff_utc"] and
+                    past["source_snapshot_id"] == original["source_snapshot_id"] and
+                    past["source_sha256"] == original["source_sha256"] and
+                    past["base_training_sha256"] == original["base_training_sha256"] and
+                    past["training_rows"] == original["training_rows"] and
+                    past["p"] == [original["p_home"],original["p_draw"],original["p_away"]] and
+                    past["expected_goals"] ==
+                        [original["expected_home_goals"],original["expected_away_goals"]],
+                    "previous public record changed")
+            _source_proof(proof, manifest_root, original, utc(past["frozen_at_utc"]))
         rows = conn.execute(
             "SELECT provider_fixture_id,model_version,horizon,record_sha256,record_json,frozen_at_utc "
             "FROM forecasts WHERE model_version=? ORDER BY provider_fixture_id,frozen_at_utc",
