@@ -653,3 +653,18 @@
 }
 
 /* (Hakkında sayfası stilleri: about.css) */
+
+
+/* Açık tema için mevcut koyu katmanları nötrleştir */
+html[data-theme="light"] .match-hero::before { border-color: rgba(38, 58, 83, 0.09); }
+html[data-theme="light"] .match-hero::after { background: linear-gradient(180deg, rgba(38, 58, 83, 0.08), transparent 60%); }
+html[data-theme="light"] .verdict-pill { background: rgba(255, 255, 255, 0.78); }
+html[data-theme="light"] .featured:hover { border-color: rgba(73, 108, 9, 0.3); }
+html[data-theme="light"] .record-main {
+  background:
+    radial-gradient(500px 260px at 100% 0%, rgba(185, 224, 68, 0.11), transparent 70%),
+    linear-gradient(160deg, var(--surface-2), var(--surface));
+}
+html[data-theme="light"] .draft {
+  background: repeating-linear-gradient(135deg, rgba(38, 58, 83, 0.012) 0 10px, transparent 10px 20px), var(--bg-2);
+}
