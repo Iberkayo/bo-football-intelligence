@@ -715,3 +715,18 @@ html[data-theme="light"] .draft {
   .fixture-row__state { grid-column: 2; justify-self: start; }
   .fixture-card__foot { align-items: flex-start; flex-direction: column; }
 }
+
+/* Kaynağı doğrulanmış, maç öncesi kaydedilmiş PAPER olasılıkları */
+.fixture-card__prob { margin-top: 1px; }
+.fixture-await--paper {
+  background: var(--home-soft); border-color: var(--line-2);
+  color: var(--text);
+}
+.fixture-row__paper {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8125rem; font-weight: 650; color: var(--text-2);
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .fixture-row__paper { white-space: normal; }
+}
