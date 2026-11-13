@@ -14,3 +14,9 @@ jobs:
         with:
           node-version: '22'
       - run: node tools/logic-test.js
+      - run: node tools/fixture-feed-test.js
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m unittest discover -s tools -p 'test_export_fixtures.py' -v
+
