@@ -580,7 +580,7 @@
 .past-head,
 .past-row {
   display: grid;
-  grid-template-columns: minmax(0, 1.7fr) 84px minmax(0, 1fr) minmax(0, 1fr) 96px;
+  grid-template-columns: minmax(0, 1.5fr) 76px minmax(185px, 1.35fr) minmax(0, 1fr) 90px;
   grid-template-areas: "match score pick actual badge";
   align-items: center;
   gap: 16px;
@@ -588,11 +588,24 @@
 }
 .past-head { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); background: var(--bg-2); border-bottom: 1px solid var(--line); }
 .past-head span:last-child { text-align: right; }
-.past-row { min-height: 76px; }
+.past-row { min-height: 88px; }
 .past-row + .past-row { border-top: 1px solid var(--line); }
 .past-row__match { grid-area: match; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .past-row__score { grid-area: score; }
 .past-row__pick { grid-area: pick; min-width: 0; }
+.past-pick__main { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; min-width: 0; }
+.past-pick__name { color: var(--text); font-size: 0.875rem; font-weight: 650; }
+.past-pick__name b { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.past-pick__tier {
+  display: inline-flex; align-items: center; border-radius: var(--r-pill);
+  padding: 2px 7px; background: var(--draw-soft); color: var(--text-2);
+  border: 1px solid var(--line); font-size: 0.7rem; font-weight: 650;
+  white-space: nowrap;
+}
+.past-pick__prob {
+  display: block; margin-top: 5px; font-size: 0.75rem; line-height: 1.5;
+  font-variant-numeric: tabular-nums; color: var(--text-3);
+}
 .past-row__actual { grid-area: actual; min-width: 0; }
 .past-row__badge { grid-area: badge; justify-self: end; }
 .past-row__meta { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-3); }
