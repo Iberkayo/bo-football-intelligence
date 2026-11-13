@@ -14,6 +14,8 @@
     league:BO.LEAGUES.some(l=>l.id===q.get("lig"))?q.get("lig"):"all",
     query:q.get("ara")||"",view:q.get("gorunum")==="list"?"list":"cards"};
   let feed={publication_state:"AWAITING_VERIFIED_REFRESH",fixtures:[],snapshot_at_utc:null};
+  let paper={byFixture:new Map(),total:0,state:"NO_VERIFIED_FROZEN_FORECASTS"};
+  let paperError=false;
   clear.innerHTML=BO.icon("close");
   search.value=state.query;
 
@@ -48,7 +50,10 @@
     notice.querySelector("p").textContent=
       "Son kaydedilmiş fikstür: "+label+". "+(stale?
       "Bu canlı bilgi değildir; saat veya karşılaşma programı değişmiş olabilir. ":"")+
-      "Henüz maç öncesi dondurulmuş BO tahmini yok; bu nedenle olasılık gösterilmiyor.";
+      (paperError?"Tahmin veri dosyası doğrulanamadı; olasılıklar gizlendi.":
+        paper.byFixture.size?"Maç öncesinde kaydedilmiş "+paper.byFixture.size+
+        " Ridge PAPER tahmini bulunuyor (canlı model güncellemesi değildir).":
+        "Henüz doğrulanmış maç öncesi Ridge tahmini yok; olasılık gösterilmiyor.");
   }
   function filtered() {
     const norm=u.fold(state.query.trim());
@@ -75,7 +80,22 @@
       (state.league===l.id)+'" title="'+u.esc(l.name)+'">'+ui.leagueMark(l.id)+u.esc(l.short)+
       ' <span class="chip__count">'+n(l.id)+'</span></button>').join("");
   }
-  function statusLine() {return '<span class="fixture-await">Tahmin bekleniyor</span>';}
+  function statusLine(m) {
+    const forecast=paper.byFixture.get(m.id);
+    if(!forecast) return '<span class="fixture-await">Tahmin bekleniyor</span>';
+    return '<span class="fixture-await fixture-await--paper">Ridge · PAPER tahmini</span>';
+  }
+  function paperProb(m) {
+    const forecast=paper.byFixture.get(m.id);
+    return forecast?ui.prob({home:m.home,away:m.away,p:forecast.p},{short:true}):"";
+  }
+  function paperNote(m) {
+    const forecast=paper.byFixture.get(m.id);
+    if(!forecast) return "Maç öncesi olasılık henüz yayımlanmadı";
+    const t=new Date(forecast.frozen_at_utc).toLocaleString("tr-TR",
+      {timeZone:"Europe/Istanbul",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+    return "Dondurulma: "+t+" · Kaydedilmiş araştırma tahmini";
+  }
   function card(m) {
     const l=u.league(m.league);
     return '<article class="match-card fixture-card" aria-label="'+u.esc(m.home+" – "+m.away+", "+m.dateTR+" "+m.timeTR)+
@@ -85,13 +105,20 @@
       '<div class="mc-center"><span class="mc-center__time">'+u.esc(m.timeTR)+'</span><span class="mc-center__day">'+
       u.esc(shortDate(Math.round((new Date(m.dateTR+"T00:00:00Z")-new Date(isoToday()+"T00:00:00Z"))/86400000)))+'</span></div>'+
       '<div class="mc-team"><span class="mc-team__name">'+u.esc(m.away)+'</span></div></div>'+
-      '<div class="fixture-card__foot">'+statusLine()+'<span class="fixture-card__note">Maç öncesi olasılık henüz yayımlanmadı</span></div></article>';
+      (paperProb(m)?'<div class="fixture-card__prob">'+paperProb(m)+'</div>':"")+
+      '<div class="fixture-card__foot">'+statusLine(m)+'<span class="fixture-card__note">'+
+      u.esc(paperNote(m))+'</span></div></article>';
   }
   function row(m) {
     return '<div class="fixture-row" role="listitem"><span class="fixture-row__time">'+u.esc(m.timeTR)+
       '</span><div class="fixture-row__teams"><strong>'+u.esc(m.home)+'</strong><span class="muted"> – </span><strong>'+
       u.esc(m.away)+'</strong><small>'+u.esc(u.league(m.league).short)+'</small></div>'+
-      '<span class="fixture-row__state">'+statusLine()+'</span></div>';
+      '<span class="fixture-row__state">'+
+      (paper.byFixture.has(m.id)?
+        '<span class="fixture-row__paper">1 %'+u.norm(paper.byFixture.get(m.id).p)[0]+
+        ' · X %'+u.norm(paper.byFixture.get(m.id).p)[1]+
+        ' · 2 %'+u.norm(paper.byFixture.get(m.id).p)[2]+'</span>':
+        statusLine(m))+'</span></div>';
   }
   function renderMatches() {
     const xs=filtered(),searching=!!state.query.trim();
@@ -128,6 +155,16 @@
       const res=await fetch("data/fixtures.json",{cache:"no-cache"});
       if(!res.ok)throw new Error("HTTP "+res.status);
       feed=BO.fixtureFeed.parse(await res.json());
+      try {
+        const rp=await fetch("data/predictions.json",{cache:"no-cache"});
+        if(!rp.ok)throw new Error("Tahmin HTTP "+rp.status);
+        paper=BO.predictionFeed.parse(await rp.json(),feed);
+        paperError=false;
+      } catch(predictionError) {
+        console.error("BO PAPER tahminleri doğrulanamadı",predictionError);
+        paper={byFixture:new Map(),total:0,state:"NO_VERIFIED_FROZEN_FORECASTS"};
+        paperError=true;
+      }
       if(!explicitDay&&!state.query) {
         const first=Array.from({length:MAX_DAYS},(_,i)=>i).find(i=>matchesFor(i).length>0);
         if(first!==undefined)state.day=first;
@@ -136,6 +173,7 @@
     } catch(err) {
       console.error("Fikstür yüklenemedi",err);
       feed={publication_state:"AWAITING_VERIFIED_REFRESH",fixtures:[],snapshot_at_utc:null};
+      paper={byFixture:new Map(),total:0,state:"NO_VERIFIED_FROZEN_FORECASTS"};
       showStatus();sync();
       notice.querySelector("h3").textContent="Fikstür bilgisi yüklenemedi";
     }

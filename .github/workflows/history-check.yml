@@ -19,4 +19,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s tools -p 'test_export_fixtures.py' -v
+      - run: node tools/prediction-feed-test.js
+      - run: python -m unittest discover -s tools -p 'test_export_paper_forecasts.py' -v
 

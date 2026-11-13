@@ -1,0 +1,9 @@
+{
+  "schema": "bo-predictions/v1",
+  "publication_state": "NO_VERIFIED_FROZEN_FORECASTS",
+  "source": "BO_BET_APPEND_ONLY_LEDGER",
+  "model_version": "ridge_poisson_api_silver_v1",
+  "fixtures_snapshot_at_utc": null,
+  "exported_at_utc": null,
+  "forecasts": []
+}
