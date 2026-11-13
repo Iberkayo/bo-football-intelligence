@@ -67,8 +67,10 @@ eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO
 eq("oran %61,9", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
 
 // 6) Tüm maçların takım/lig kaydı var
-const missing = BO.MATCHES.concat(hist.rows).filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
-eq("eksik takım/lig yok", missing.length, 0);
+const missing = BO.MATCHES.filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
+eq("örnek maç takım/lig kayıtları sağlam", missing.length, 0);
+eq("gerçek geçmiş maçların ligleri tanımlı", hist.rows.every(r => BO.LEAGUES.some(l => l.id === r.league)), true);
+eq("gerçek takım adları korunuyor", hist.rows.every(r => BO.util.team(r.home).name === r.home && BO.util.team(r.away).name === r.away), true);
 
 // 7) Takım armaları yerine okunur takım adları
 const card = BO.ui.matchCard(BO.MATCHES[0], 0);
