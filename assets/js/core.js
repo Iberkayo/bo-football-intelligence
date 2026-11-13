@@ -209,11 +209,11 @@ window.BO = window.BO || {};
   ui.emptyArt = function () {
     return (
       '<svg class="empty__art" viewBox="0 0 80 80" aria-hidden="true">' +
-      '<rect x="6" y="14" width="68" height="52" rx="10" fill="#0e1525" stroke="rgba(148,163,184,.3)" stroke-dasharray="4 4"/>' +
+      '<rect x="6" y="14" width="68" height="52" rx="10" fill="var(--surface)" stroke="rgba(148,163,184,.3)" stroke-dasharray="4 4"/>' +
       '<path d="M40 14v52" stroke="rgba(148,163,184,.2)"/><circle cx="40" cy="40" r="10" fill="none" stroke="rgba(148,163,184,.25)"/>' +
-      '<circle cx="58" cy="24" r="12" fill="#131b2e" stroke="rgba(198,244,50,.5)" stroke-width="1.5"/>' +
-      '<circle cx="56.5" cy="22.5" r="4.5" fill="none" stroke="#c6f432" stroke-width="2"/>' +
-      '<path d="m60 26 3 3" stroke="#c6f432" stroke-width="2" stroke-linecap="round"/></svg>'
+      '<circle cx="58" cy="24" r="12" fill="var(--surface-2)" stroke="rgba(198,244,50,.5)" stroke-width="1.5"/>' +
+      '<circle cx="56.5" cy="22.5" r="4.5" fill="none" stroke="var(--brand)" stroke-width="2"/>' +
+      '<path d="m60 26 3 3" stroke="var(--brand)" stroke-width="2" stroke-linecap="round"/></svg>'
     );
   };
 
@@ -222,10 +222,10 @@ window.BO = window.BO || {};
     const r = 26, c = 2 * Math.PI * r;
     return (
       '<svg class="track-card__ring" viewBox="0 0 64 64" aria-hidden="true">' +
-      '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="#1b2439" stroke-width="7"/>' +
-      '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="#c6f432" stroke-width="7" stroke-linecap="round" ' +
+      '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="var(--surface-3)" stroke-width="7"/>' +
+      '<circle cx="32" cy="32" r="' + r + '" fill="none" stroke="var(--brand)" stroke-width="7" stroke-linecap="round" ' +
       'stroke-dasharray="' + ((c * pct) / 100).toFixed(2) + " " + c.toFixed(2) + '" transform="rotate(-90 32 32)"/>' +
-      '<text x="32" y="36.5" text-anchor="middle" font-family="Manrope,Inter,sans-serif" font-weight="800" font-size="13" fill="#eaf0fa">%' + Math.round(pct) + "</text></svg>"
+      '<text x="32" y="36.5" text-anchor="middle" font-family="Manrope,Inter,sans-serif" font-weight="800" font-size="13" fill="var(--text)">%' + Math.round(pct) + "</text></svg>"
     );
   };
 })();
@@ -257,7 +257,7 @@ window.BO = window.BO || {};
       '<span class="product-switch__item is-current">BO-BET</span>' +
       '<span class="product-switch__item is-soon" title="Yakında">Scout <small>yakında</small></span>' +
       '<span class="product-switch__item is-soon" title="Yakında">Stories <small>yakında</small></span>' +
-      "</div></div></div>"
+      '</div><button class="theme-toggle" type="button" aria-label="Açık temaya geç" title="Açık temaya geç"></button></div></div>'
     );
   }
 
@@ -288,7 +288,10 @@ window.BO = window.BO || {};
     const h = document.getElementById("site-header");
     const b = document.getElementById("bottom-nav");
     const f = document.getElementById("site-footer");
-    if (h) h.innerHTML = header(page);
+    if (h) {
+      h.innerHTML = header(page);
+      if (BO.theme && BO.theme.bind) BO.theme.bind();
+    }
     if (b) b.innerHTML = bottomNav(page);
     if (f) f.innerHTML = footer();
     // Prototip içinde (iframe) gömülüyken üst menü bağlantıları aynı çerçevede kalır.
