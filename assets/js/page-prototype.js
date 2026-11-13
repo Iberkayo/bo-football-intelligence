@@ -9,7 +9,7 @@
       points: ["Gün şeridi ve maç sayıları", "Lig çipleri + Türkçe duyarlı takım araması", "Günün maçı vitrini ve lig gruplu kartlar", "Kart / liste görünümü", "Canlı tahmin boş durumu"] },
     { id: "masaustu-detay", label: "2 · Masaüstü maç detayı", device: "desktop", src: "mac.html?id=m01", url: "bo-bet / maç / arsenal-chelsea",
       desc: "Sitenin en etkileyici ekranı: takım isimleri, olasılıklar ve 100 maç görseli.",
-      points: ["Ölçülü dille otomatik değerlendirme", "“Bu maç 100 kez oynansaydı” görseli", "Taslak olarak işaretli analiz alanları", "Açılır “BO nasıl yapıyor?” bölümü", "Başlangıçta kapalı yöntem karşılaştırması"] },
+      points: ["Ölçülü dille otomatik değerlendirme", "Kompakt 10×10 olasılık haritası", "Taslak olarak işaretli analiz alanları", "Açılır “BO nasıl yapıyor?” bölümü", "Başlangıçta kapalı yöntem karşılaştırması"] },
     { id: "masaustu-gecmis", label: "3 · Masaüstü geçmiş tahminler", device: "desktop", src: "gecmis-tahminler.html", url: "bo-bet / geçmiş-tahminler",
       desc: "Şeffaflık sayfası: gerçek 63 maçlık test sonucu ve açık uyarı.",
       points: ["%61,9 doğru sonuç oranı", "63 kutuluk oran şeridi", "Lig, tarih ve sonuç filtreleri", "Görünür retrospektif test uyarısı"] },
