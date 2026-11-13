@@ -37,6 +37,8 @@
   BO.theme = {
     apply: apply,
     bind: function () {
+      // Theme-color meta is parsed after this early theme script.
+      apply(root.dataset.theme, false);
       document.querySelectorAll(".theme-toggle").forEach(function (button) {
         button.addEventListener("click", function () {
           apply(root.dataset.theme === "light" ? "dark" : "light", true);
