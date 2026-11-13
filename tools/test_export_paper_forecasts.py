@@ -74,9 +74,10 @@ class PublisherTests(unittest.TestCase):
         con.commit()
         con.close()
 
-    def publish(self,existing=None):
+    def publish(self,existing=None,now=None):
         return export(ledger=self.ledger,manifest=self.manifest,
-                      fixtures_path=self.fixture_path,existing_path=existing,now=self.now)
+                      fixtures_path=self.fixture_path,existing_path=existing,
+                      now=now or self.now)
 
     def test_one_verified_prospective_paper_forecast(self):
         self.insert()
@@ -142,7 +143,12 @@ class PublisherTests(unittest.TestCase):
             777,CHAMPION,x["horizon"],x["record_sha256"],
             json.dumps(x),x["forecast_frozen_at_utc"]))
         con.commit();con.close()
-        second=self.publish(existing=older_path)
+        # The second horizon has really occurred by this later export time.
+        later=datetime(2026,11,15,20,tzinfo=timezone.utc)
+        self.fixture["snapshot_at_utc"]="2026-11-15T19:00:00+00:00"
+        self.fixture["fixtures"][0]["source_observed_at_utc"]="2026-11-15T19:00:00+00:00"
+        self.fixture_path.write_text(json.dumps(self.fixture),encoding="utf-8")
+        second=self.publish(existing=older_path,now=later)
         self.assertEqual(len(second["forecasts"]),1)
         self.assertEqual(second["forecasts"][0]["record_sha256"],old["forecasts"][0]["record_sha256"])
 
