@@ -2,7 +2,7 @@
    BO Football Intelligence — Veri katmanı (prototip)
    ---------------------------------------------------------
    ÖNEMLİ:
-   • MATCHES ve PAST_SAMPLES yalnızca TASARIM AMAÇLI ÖRNEKTİR.
+   • MATCHES yalnızca TASARIM AMAÇLI ÖRNEKTİR.
      Canlı tahmin verisi değildir.
    • BACKTEST içindeki sayılar gerçek araştırma sonuçlarıdır
      (geçmiş maç verileri üzerinde retrospektif test).
@@ -103,34 +103,8 @@ BO.BACKTEST = {
   accuracyText: "61,9",
 };
 
-/* -------------------------------------------------------
-   GEÇMİŞ MAÇ LİSTESİ — ÖRNEK KAYITLAR (tasarım amaçlı)
-   p: maç öncesi olasılıklar, score: gerçekleşen skor
-   Bu liste 63 maçlık gerçek test kaydının kendisi DEĞİLDİR;
-   gerçek kayıtlar bağlandığında aynı yapıyla değiştirilir.
-   ------------------------------------------------------- */
-BO.PAST_SAMPLES = [
-  { date: "2026-11-08", league: "superlig", home: "gala", away: "besiktas", p: [51, 26, 23], score: [2, 1] },
-  { date: "2026-11-08", league: "premier", home: "arsenal", away: "tottenham", p: [55, 24, 21], score: [1, 1] },
-  { date: "2026-11-08", league: "laliga", home: "barca", away: "sevilla", p: [62, 21, 17], score: [3, 0] },
-  { date: "2026-11-07", league: "bundesliga", home: "dortmund", away: "frankfurt", p: [49, 27, 24], score: [2, 2] },
-  { date: "2026-11-07", league: "seriea", home: "napoli", away: "roma", p: [46, 29, 25], score: [1, 0] },
-  { date: "2026-11-07", league: "ligue1", home: "lyon", away: "psg", p: [22, 23, 55], score: [0, 2] },
-  { date: "2026-11-06", league: "superlig", home: "fener", away: "samsun", p: [60, 22, 18], score: [3, 1] },
-  { date: "2026-11-06", league: "premier", home: "liverpool", away: "manutd", p: [57, 24, 19], score: [1, 2] },
-  { date: "2026-11-06", league: "laliga", home: "betis", away: "atletico", p: [30, 29, 41], score: [0, 1] },
-  { date: "2026-11-05", league: "seriea", home: "milan", away: "juventus", p: [39, 31, 30], score: [0, 0] },
-  { date: "2026-11-05", league: "bundesliga", home: "leverkusen", away: "wolfsburg", p: [58, 23, 19], score: [4, 1] },
-  { date: "2026-11-05", league: "ligue1", home: "marseille", away: "lille", p: [44, 28, 28], score: [1, 3] },
-  { date: "2026-11-04", league: "superlig", home: "trabzon", away: "basaksehir", p: [47, 27, 26], score: [2, 0] },
-  { date: "2026-11-04", league: "premier", home: "chelsea", away: "mancity", p: [31, 27, 42], score: [1, 1] },
-  { date: "2026-11-04", league: "laliga", home: "real", away: "bilbao", p: [64, 20, 16], score: [2, 0] },
-  { date: "2026-11-03", league: "seriea", home: "atalanta", away: "inter", p: [32, 28, 40], score: [1, 2] },
-  { date: "2026-11-03", league: "bundesliga", home: "bayern", away: "leipzig", p: [59, 22, 19], score: [1, 3] },
-  { date: "2026-11-03", league: "ligue1", home: "nice", away: "monaco", p: [37, 29, 34], score: [2, 1] },
-  { date: "2026-11-02", league: "superlig", home: "besiktas", away: "fener", p: [38, 28, 34], score: [1, 1] },
-  { date: "2026-11-02", league: "premier", home: "tottenham", away: "liverpool", p: [29, 25, 46], score: [0, 2] },
-];
+/* Gerçek geçmiş maçlar data/history.json dosyasından doğrulanarak yüklenir.
+   Tasarım amaçlı geçmiş maç kayıtları kaldırılmıştır. */
 
 /* -------------------------------------------------------
    Maç detayında gelecekte yer alacak analiz alanları (TASLAK)

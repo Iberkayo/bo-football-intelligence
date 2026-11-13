@@ -7,7 +7,7 @@ const root = path.join(__dirname, "..");
 const ctx = { window: {}, console, location: { search: "", pathname: "/" }, history: { replaceState() {} }, URLSearchParams, document: {} };
 ctx.window = ctx;
 vm.createContext(ctx);
-["data.js", "icons.js", "core.js"].forEach((f) => vm.runInContext(fs.readFileSync(path.join(root, "assets/js", f), "utf8"), ctx));
+["data.js", "icons.js", "core.js", "history.js"].forEach((f) => vm.runInContext(fs.readFileSync(path.join(root, "assets/js", f), "utf8"), ctx));
 const BO = ctx.BO, u = BO.util;
 
 let fail = 0;
@@ -18,11 +18,11 @@ const eq = (name, got, exp) => {
 };
 
 // 1) Olasılıklar her zaman toplam 100
-[...BO.MATCHES.map((m) => m.p), ...BO.MATCHES.map((m) => m.alt), ...BO.PAST_SAMPLES.map((r) => r.p), [33.3, 33.3, 33.3], [1, 1, 1], [50, 30, 25]].forEach((p, i) => {
+[...BO.MATCHES.map((m) => m.p), ...BO.MATCHES.map((m) => m.alt), [33.3, 33.3, 33.3], [1, 1, 1], [50, 30, 25]].forEach((p, i) => {
   const s = u.norm(p).reduce((a, b) => a + b, 0);
   if (s !== 100) { fail++; console.log("✗ toplam 100 değil:", p, u.norm(p)); }
 });
-console.log("✓ tüm olasılık setleri %100'e normalize ediliyor (" + (BO.MATCHES.length * 2 + BO.PAST_SAMPLES.length + 3) + " set)");
+console.log("✓ tüm olasılık setleri %100'e normalize ediliyor (" + (BO.MATCHES.length * 2 + 3) + " set)");
 eq("norm [1,1,1]", u.norm([1, 1, 1]), [34, 33, 33]);
 
 // 2) Değerlendirme dili
@@ -47,15 +47,30 @@ eq("besiktas → Beşiktaş", u.fold("Beşiktaş").includes(u.fold("besiktas")),
 eq("FENERBAHCE → Fenerbahçe", u.fold("Fenerbahçe").includes(u.fold("FENERBAHÇE")), true);
 eq("istanbul İ", u.fold("İstanbul"), "istanbul");
 
-// 5) Geçmiş: doğru/yanlış hesabı
-const ok = BO.PAST_SAMPLES.filter((r) => u.argmax(u.norm(r.p)) === u.outcomeOfScore(r.score)).length;
-console.log("ℹ örnek kayıtlarda doğru seçim:", ok + "/" + BO.PAST_SAMPLES.length);
+// 5) Gerçek 63 maçın doğrulaması ve geriye dönük test özeti
+const histDoc = JSON.parse(fs.readFileSync(path.join(root, "data", "history.json"), "utf8"));
+const hist = BO.history.parse(histDoc);
+eq("gerçek maç sayısı", hist.rows.length, 63);
+eq("Ridge doğru", hist.correct, 39);
+eq("Ridge yanlış", hist.wrong, 24);
+eq("alternatif yöntem doğru", hist.alternativeCorrect, 37);
+eq("alternatif yöntem yanlış", hist.alternativeWrong, 26);
+eq("6 lig", new Set(hist.rows.map(r => r.league)).size, 6);
+eq("retrospektif durum", hist.data_status, "RETROSPECTIVE_REPLAY_NOT_PROSPECTIVE");
+eq("sahte geçmiş kayıt yok", Object.prototype.hasOwnProperty.call(BO, "PAST_SAMPLES"), false);
+const altered = JSON.parse(JSON.stringify(histDoc));
+altered.matches[0].score = [99, 99];
+let rejected = false;
+try { BO.history.parse(altered); } catch (_) { rejected = true; }
+eq("bozulmuş skor reddedilir", rejected, true);
 eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO.BACKTEST.total);
-eq("oran %61,9", ((BO.BACKTEST.correct / BO.BACKTEST.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
+eq("oran %61,9", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
 
 // 6) Tüm maçların takım/lig kaydı var
-const missing = BO.MATCHES.concat(BO.PAST_SAMPLES).filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
-eq("eksik takım/lig yok", missing.length, 0);
+const missing = BO.MATCHES.filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
+eq("örnek maç takım/lig kayıtları sağlam", missing.length, 0);
+eq("gerçek geçmiş maçların ligleri tanımlı", hist.rows.every(r => BO.LEAGUES.some(l => l.id === r.league)), true);
+eq("gerçek takım adları korunuyor", hist.rows.every(r => BO.util.team(r.home).name === r.home && BO.util.team(r.away).name === r.away), true);
 
 // 7) Takım armaları yerine okunur takım adları
 const card = BO.ui.matchCard(BO.MATCHES[0], 0);
