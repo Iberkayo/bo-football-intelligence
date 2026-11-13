@@ -84,6 +84,12 @@ def export(silver: Path, *, from_day: date, days: int = 21,
         k,o=utc(kickoff),utc(observed)
         if o > latest_dt or o >= k or o > now:
             raise ExportError("Invalid source/kickoff time ordering")
+        # Fresh unrelated rows must not make an old fixture trustworthy.
+        fixture_age_hours = (now-o).total_seconds()/3600
+        if fixture_age_hours > ALLOWED_SOURCE_AGE_HOURS and not allow_archived:
+            raise ExportError(
+                f"Stale fixture {fid} ({fixture_age_hours:.1f}h): refresh all selected fixtures"
+            )
         if league not in LEAGUES or status!="NS" or not home or not away:
             raise ExportError("Invalid league/fixture/team")
         if not isinstance(sha,str) or len(sha)!=64 or any(x not in "0123456789abcdef" for x in sha.lower()):
