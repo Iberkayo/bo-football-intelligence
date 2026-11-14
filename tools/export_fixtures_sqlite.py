@@ -13,7 +13,7 @@ import tempfile
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-LEAGUES = {203:"superlig",39:"premier",140:"laliga",135:"seriea",78:"bundesliga",61:"ligue1"}
+LEAGUES = {203:"superlig",39:"premier",140:"laliga",135:"seriea",78:"bundesliga",61:"ligue1",88:"eredivisie",94:"primeira",40:"championship",144:"jupiler"}
 ALLOWED_SOURCE_AGE_HOURS = 36
 
 
