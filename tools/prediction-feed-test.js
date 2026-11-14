@@ -4,12 +4,23 @@ const context={window:null,console,Date};context.window=context;
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,"../assets/js/prediction-feed.js"),"utf8"),context);
 const validator=context.BO.predictionFeed;
-const blank=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/predictions.json"),"utf8"));
+// Synthetic empty-state fixture; never expect live publication JSON to be blank.
+const blank={schema:"bo-predictions/v1",source:"BO_BET_APPEND_ONLY_LEDGER",
+  publication_state:"NO_VERIFIED_FROZEN_FORECASTS",
+  model_version:"ridge_poisson_api_silver_v1",
+  fixtures_snapshot_at_utc:null,exported_at_utc:null,forecasts:[]};
 const fixtures={
   snapshot_at_utc:"2025-11-13T12:30:00+00:00",
   fixtures:[{id:"api-football:fixture:777",kickoff_utc:"2025-11-16T13:00:00+00:00"}]
 };
 assert.equal(validator.parse(blank,fixtures).byFixture.size,0);
+// Production data has real immutable Ridge records; validate their fixture join as well.
+const liveFixtures=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/fixtures.json"),"utf8"));
+const livePredictions=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/predictions.json"),"utf8"));
+assert.equal(livePredictions.publication_state,"VERIFIED_PAPER_LEDGER_EXPORT");
+const live=validator.parse(livePredictions,liveFixtures);
+assert.ok(live.total>0,"published predictions should not be silently empty");
+assert.equal(live.byFixture.size,live.total,"published forecasts must match fixture identities");
 const t={
  schema:"bo-predictions/v1", source:"BO_BET_APPEND_ONLY_LEDGER",
  publication_state:"VERIFIED_PAPER_LEDGER_EXPORT",
