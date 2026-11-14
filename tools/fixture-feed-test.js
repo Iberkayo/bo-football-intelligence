@@ -5,8 +5,16 @@ const ctx={window:null,console,Intl,Date};ctx.window=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(__dirname,"../assets/js/fixture-feed.js"),"utf8"),ctx);
 const feed=ctx.BO.fixtureFeed;
-const pending=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/fixtures.json"),"utf8"));
+// Always use synthetic waiting-state fixture. Live publication is no longer empty.
+const pending={schema:"bo-fixtures/v1",source:"API_FOOTBALL_SILVER",
+  publication_state:"AWAITING_VERIFIED_REFRESH",snapshot_at_utc:null,
+  coverage:null,fixtures:[]};
 assert.equal(feed.parse(pending).fixtures.length,0);
+const published=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/fixtures.json"),"utf8"));
+assert.equal(published.publication_state,"VERIFIED_SCHEDULE_SNAPSHOT");
+const publicFixtures=feed.parse(published);
+assert.ok(publicFixtures.fixtures.length>0,"published fixture dataset must contain verified fixtures");
+assert.equal(new Set(publicFixtures.fixtures.map(m=>m.id)).size,publicFixtures.fixtures.length);
 const one={
  schema:"bo-fixtures/v1",source:"API_FOOTBALL_SILVER",
  publication_state:"ARCHIVED_SNAPSHOT_NOT_LIVE",
