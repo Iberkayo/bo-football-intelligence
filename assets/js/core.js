@@ -279,7 +279,7 @@ window.BO = window.BO || {};
       '<div class="site-footer__col"><h4>Prototip</h4><a href="prototip.html">Tüm ekranlar</a><span class="muted">Örnek verilerle hazırlanmıştır</span></div>' +
       "</div>" +
       '<div class="site-footer__legal"><span>© 2026 BO Football Intelligence</span>' +
-      "<span>Bu bir tasarım prototipidir. Maç olasılıkları örnek gösterimdir; canlı tahmin değildir.</span></div></div>"
+      "<span>Ana sayfa doğrulanmış kaynakları ve dondurulmuş PAPER tahminlerini gösterir; prototip ekranları örnek veridir. Kesin sonuç veya bahis önerisi değildir.</span></div></div>"
     );
   }
 
