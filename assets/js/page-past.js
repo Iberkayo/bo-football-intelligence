@@ -14,31 +14,52 @@
       '<p>Lütfen sayfayı yenileyin. Bu prototipi bilgisayarınızda açıyorsanız bir yerel HTTP sunucusu kullanın.</p></div>';
   }
 
-  function renderRecord(dataset, rows) {
+  const pctText = (c, n) => (c / n * 100).toFixed(1).replace(".", ",");
+  function renderRecord(dataset, allRows, league) {
     const d = iso => new Date(iso + "T12:00:00+03:00");
     const opts = { timeZone: "Europe/Istanbul", day: "numeric", month: "long" };
     const range = d(dataset.period.start).toLocaleDateString("tr-TR", opts) + " – " +
-      d(dataset.period.end).toLocaleDateString("tr-TR", { ...opts, year: "numeric" }) +
-      " · " + dataset.leagues + " lig";
+      d(dataset.period.end).toLocaleDateString("tr-TR", { ...opts, year: "numeric" });
+    const rows = league === "all" ? allRows : allRows.filter(r => r.league === league);
+    const total = rows.length, correct = rows.filter(r => r.ok).length, wrong = total - correct;
+    const scope = league === "all" ? dataset.leagues + " lig" : u.league(league).name;
+    const where = league === "all" ? "" : u.esc(u.league(league).short) + " için ";
+    // Lig bazında oranlar; "Tüm ligler" oranı seçimden bağımsız sabit kalır.
+    const byLeague = BO.LEAGUES.map(l => {
+      const xs = allRows.filter(r => r.league === l.id);
+      return { id: l.id, n: xs.length, c: xs.filter(r => r.ok).length };
+    }).filter(x => x.n > 0).sort((a, b) => b.c / b.n - a.c / a.n || b.n - a.n);
+    const leagueRow = x =>
+      '<button class="league-rate" type="button" data-league="' + x.id + '" aria-pressed="' +
+      (league === x.id) + '"><span class="league-rate__name">' + ui.leagueMark(x.id) +
+      u.esc(u.league(x.id).short) + '</span>' +
+      '<span class="league-rate__bar" aria-hidden="true"><i style="width:' +
+      (x.c / x.n * 100).toFixed(1) + '%"></i></span>' +
+      '<span class="league-rate__val"><b>%' + pctText(x.c, x.n) + '</b><small>' + x.n +
+      ' maç</small></span></button>';
     record.innerHTML =
       '<div class="record-main reveal">' +
-      '<span class="record-main__label">Geçmiş maç testi · ' + range + '</span>' +
-      '<div class="record-main__big"><strong><small>%</small>' + dataset.accuracyText + '</strong></div>' +
-      '<p class="record-main__sentence">Geçmişe dönük testte <b>' + dataset.total +
-      ' maçın ' + u.locSuffix(dataset.correct) + '</b> en olası görülen sonuç gerçekleşti.</p>' +
-      '<div class="record-main__strip" role="img" aria-label="' + dataset.total + ' maçtan ' +
-      dataset.correct + ' doğru, ' + dataset.wrong + ' yanlış seçim">' +
+      '<span class="record-main__label">Geçmiş maç testi · ' + range + ' · ' + u.esc(scope) + '</span>' +
+      '<div class="record-main__big"><strong><small>%</small>' + pctText(correct, total) + '</strong></div>' +
+      '<p class="record-main__sentence">Geçmişe dönük testte ' + where + '<b>' + total +
+      ' maçın ' + u.locSuffix(correct) + '</b> en olası görülen sonuç gerçekleşti.</p>' +
+      '<div class="record-main__strip' + (total > 300 ? ' record-main__strip--dense' : '') + '" role="img" aria-label="' + total + ' maçtan ' +
+      correct + ' doğru, ' + wrong + ' yanlış seçim">' +
       rows.map(r => '<i class="' + (r.ok ? 'ok' : 'no') + '" aria-hidden="true"></i>').join('') + '</div>' +
       '<div class="record-main__legend"><span><i style="background:var(--ok)"></i>Doğru seçim</span>' +
       '<span><i style="background:var(--surface-3)"></i>Yanlış seçim</span>' +
       '<span>Her kutu bir gerçek maçın test sonucunu temsil eder</span></div></div>' +
-      '<div class="record-side">' +
+      '<div class="record-side"><div class="record-kpis">' +
       '<div class="kpi"><span class="kpi__icon kpi__icon--n">' + BO.icon("calendar") + '</span><div><strong>' +
-      dataset.total + '</strong><span>Değerlendirilen maç</span></div></div>' +
+      total + '</strong><span>Maç</span></div></div>' +
       '<div class="kpi"><span class="kpi__icon kpi__icon--ok">' + BO.icon("check") + '</span><div><strong>' +
-      dataset.correct + '</strong><span>Doğru seçim</span></div></div>' +
+      correct + '</strong><span>Doğru</span></div></div>' +
       '<div class="kpi"><span class="kpi__icon kpi__icon--no">' + BO.icon("x") + '</span><div><strong>' +
-      dataset.wrong + '</strong><span>Yanlış seçim</span></div></div></div>';
+      wrong + '</strong><span>Yanlış</span></div></div></div>' +
+      '<div class="league-rates"><div class="league-rates__head"><strong>Lig bazında doğru seçim</strong>' +
+      '<button class="league-rates__all" type="button" data-league="all" aria-pressed="' +
+      (league === "all") + '">Tüm ligler · %' + pctText(dataset.correct, dataset.total) + '</button></div>' +
+      byLeague.map(leagueRow).join('') + '</div></div>';
   }
 
   const outcome = (i, r) =>
@@ -90,7 +111,7 @@
       dateSel.innerHTML = '<option value="all">Tüm tarihler</option>' +
         dates.map(d => '<option value="' + d + '">' + u.isoLong(d) + '</option>').join('');
       tag.textContent = dataset.total + " doğrulanmış test kaydı";
-      renderRecord(dataset, rows);
+      renderRecord(dataset, rows, state.league);
 
       function renderChips() {
         chips.innerHTML =
@@ -125,9 +146,16 @@
           '<span>Retrospektif replay · Canlı tahmin kaydı değildir</span></div>';
       }
 
+      function selectLeague(id) {
+        state.league = id; renderChips(); renderList(); renderRecord(dataset, rows, id);
+      }
       chips.addEventListener("click", event => {
         const button = event.target.closest(".chip"); if (!button) return;
-        state.league = button.dataset.league; renderChips(); renderList();
+        selectLeague(button.dataset.league);
+      });
+      record.addEventListener("click", event => {
+        const button = event.target.closest("[data-league]"); if (!button) return;
+        selectLeague(button.dataset.league);
       });
       dateSel.addEventListener("change", () => { state.date = dateSel.value; renderList(); });
       resSel.addEventListener("change", () => { state.result = resSel.value; renderList(); });
@@ -135,7 +163,7 @@
         if (!event.target.closest('[data-act="reset"]')) return;
         state.league = state.date = state.result = "all";
         dateSel.value = resSel.value = "all";
-        renderChips(); renderList();
+        renderChips(); renderList(); renderRecord(dataset, rows, "all");
       });
       renderChips();
       renderList();
