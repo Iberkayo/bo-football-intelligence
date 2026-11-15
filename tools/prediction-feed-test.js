@@ -4,7 +4,7 @@ const context={window:null,console,Date};context.window=context;
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(__dirname,"../assets/js/prediction-feed.js"),"utf8"),context);
 const validator=context.BO.predictionFeed;
-const blank=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/predictions.json"),"utf8"));
+const blank=JSON.parse(fs.readFileSync(path.join(__dirname,"fixtures/predictions-blank.json"),"utf8"));
 const fixtures={
   snapshot_at_utc:"2025-11-13T12:30:00+00:00",
   fixtures:[{id:"api-football:fixture:777",kickoff_utc:"2025-11-16T13:00:00+00:00"}]

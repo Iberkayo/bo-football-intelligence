@@ -5,7 +5,7 @@ const ctx={window:null,console,Intl,Date};ctx.window=ctx;
 vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(__dirname,"../assets/js/fixture-feed.js"),"utf8"),ctx);
 const feed=ctx.BO.fixtureFeed;
-const pending=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/fixtures.json"),"utf8"));
+const pending=JSON.parse(fs.readFileSync(path.join(__dirname,"fixtures/fixtures-pending.json"),"utf8"));
 assert.equal(feed.parse(pending).fixtures.length,0);
 const one={
  schema:"bo-fixtures/v1",source:"API_FOOTBALL_SILVER",

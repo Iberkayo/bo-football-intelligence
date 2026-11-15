@@ -22,4 +22,6 @@ jobs:
       - run: node tools/prediction-feed-test.js
       - run: node tools/paper-markets-test.js
       - run: python -m unittest discover -s tools -p 'test_export_paper_forecasts.py' -v
+      - name: Published data/*.json (schema-only)
+        run: node tools/live-data-check.js
 
