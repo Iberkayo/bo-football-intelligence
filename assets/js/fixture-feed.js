@@ -3,7 +3,7 @@
 window.BO = window.BO || {};
 BO.fixtureFeed = (function () {
   "use strict";
-  const allowed = new Set(["superlig","premier","laliga","seriea","bundesliga","ligue1"]);
+  const allowed = new Set(["superlig","premier","laliga","seriea","bundesliga","ligue1","eredivisie","primeira","championship","jupiler"]);
   const states = new Set(["ARCHIVED_SNAPSHOT_NOT_LIVE","VERIFIED_SCHEDULE_SNAPSHOT","AWAITING_VERIFIED_REFRESH"]);
   const validDate = x => typeof x === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x) && !Number.isNaN(Date.parse(x + "T00:00:00Z"));
   const utcMillis = x => {

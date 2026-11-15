@@ -20,7 +20,8 @@ from pathlib import Path
 CHAMPION = "ridge_poisson_api_silver_v1"
 PUBLIC_STATUS = "PAPER_ONLY_NO_BET"
 SNAPSHOT_AGE_HOURS = 36
-LEAGUES = {"superlig", "premier", "laliga", "seriea", "bundesliga", "ligue1"}
+LEAGUES = {"superlig", "premier", "laliga", "seriea", "bundesliga", "ligue1",
+           "eredivisie", "primeira", "championship", "jupiler"}
 
 
 class ForecastExportError(ValueError):
@@ -122,7 +123,8 @@ def _public_record(item, *, fixture, horizon, now):
             "invalid pre-kickoff horizon")
     require(item.get("league") == "api:" +
             str({"superlig":203,"premier":39,"laliga":140,"seriea":135,
-                 "bundesliga":78,"ligue1":61}[fixture["league"]]), "league mismatch")
+                 "bundesliga":78,"ligue1":61,"eredivisie":88,"primeira":94,
+                 "championship":40,"jupiler":144}[fixture["league"]]), "league mismatch")
     require(_hex(item.get("base_training_sha256")) and
             type(item.get("training_rows")) is int and item["training_rows"] > 0,
             "base training provenance missing")

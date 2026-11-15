@@ -17,6 +17,10 @@ BO.LEAGUES = [
   { id: "seriea", short: "Serie A", name: "İtalya Serie A", code: "IT", color: "#1c64c8" },
   { id: "bundesliga", short: "Bundesliga", name: "Almanya Bundesliga", code: "DE", color: "#b91c1c" },
   { id: "ligue1", short: "Ligue 1", name: "Fransa Ligue 1", code: "FR", color: "#0f766e" },
+  { id: "eredivisie", short: "Eredivisie", name: "Hollanda Eredivisie", code: "NL", color: "#ea580c" },
+  { id: "primeira", short: "Liga Portugal", name: "Portekiz Primeira Liga", code: "PT", color: "#15803d" },
+  { id: "championship", short: "Championship", name: "İngiltere Championship", code: "EN", color: "#475569" },
+  { id: "jupiler", short: "Pro League", name: "Belçika Pro League", code: "BE", color: "#a16207" },
 ];
 
 BO.TEAMS = {
