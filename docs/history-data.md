@@ -1,3 +1,30 @@
+# BO-BET Geçmiş Test Verisi — V2 (10 lig, 15 Kasım 2026)
+
+Geçmiş Tahminler sayfası artık `bo-history/v2` biçimindeki `data/history.json`
+dosyasını okuyor.
+
+## İçerik
+- Kapsam: **1 Ağustos – 14 Kasım 2026** (Türkiye tarihi), **10 lig**, **1.084 maç**.
+- Model: yalnız Ridge champion, `ridge_poisson`, ile aynı ayarlar.
+- Sonuç: en olası görülen sonuç **568** maçta gerçekleşti (%52,4).
+- Lig bazında doğru seçim oranı: Serie A %60, Belçika %61, Primeira %57, Ligue 1 %57, La Liga %54, Süper Lig %53, Bundesliga %51, Premier %50, Eredivisie %49, Championship %42.
+
+## Yöntem
+- Tarih bazlı replay: her gün, o günün hiçbir sonucu görülmeden tahmin edilir; eğitimde yalnız daha önceki günler kullanılır.
+- Statü: `RETROSPECTIVE_REPLAY_NOT_PROSPECTIVE`. Bunlar maçtan önce yayınlanmış tahminler değildir.
+- Canlı ve maç öncesi kayıtlar ayrı tutulur (`data/predictions.json`).
+- E5 gölge modeli ve Opportunity C bu dosyada **yok**.
+
+## Üretim (özel taraf, sıfır API isteği)
+1. `bo-bet`: `python -m bobet.e5_xg_strength` ile `research/site_history_20261115_ten_leagues_plan.json` planı çalıştırılır. Çıktı: özel `results\site-history-10l-20261115`.
+2. `python -m bobet.site_history_export` yalnız Ridge kolunu alır, skor ve kimlikleri Silver ile karşılaştırır, sonra staging klasörüne `history.json` yazar. Git checkout içine yazmayı reddeder.
+3. Dosya bu repoya kopyalanır. `node tools/logic-test.js` sayıları doğrular.
+
+`tools/import_history_csv.py`, V1 (2–8 Kasım, 63 maç, SHA'ya kilitli) içindir ve tarihsel kayıt olarak durur.
+`assets/js/history.js` hem v1 hem v2 biçimini okuyabilir.
+
+---
+
 # BO-BET Geçmiş Test Verisi — V1
 
 Bu sayfa, **2–8 Kasım 2026** döneminde altı ligden **63 tamamlanmış maça**

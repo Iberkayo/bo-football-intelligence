@@ -1,4 +1,4 @@
-/* BO-BET — gerçek 63 maçlık, kaynak izi bulunan retrospektif geçmiş */
+/* BO-BET — kaynak izi bulunan, tarih sıralı retrospektif Ridge geçmişi (data/history.json) */
 (function () {
   BO.shell();
   const u = BO.util, ui = BO.ui;
@@ -15,7 +15,11 @@
   }
 
   function renderRecord(dataset, rows) {
-    const range = "2–8 Kasım 2026";
+    const d = iso => new Date(iso + "T12:00:00+03:00");
+    const opts = { timeZone: "Europe/Istanbul", day: "numeric", month: "long" };
+    const range = d(dataset.period.start).toLocaleDateString("tr-TR", opts) + " – " +
+      d(dataset.period.end).toLocaleDateString("tr-TR", { ...opts, year: "numeric" }) +
+      " · " + dataset.leagues + " lig";
     record.innerHTML =
       '<div class="record-main reveal">' +
       '<span class="record-main__label">Geçmiş maç testi · ' + range + '</span>' +

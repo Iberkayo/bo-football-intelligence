@@ -11,7 +11,7 @@
       desc: "Sitenin en etkileyici ekranı: takım isimleri, olasılıklar ve 100 maç görseli.",
       points: ["Ölçülü dille otomatik değerlendirme", "Kompakt 10×10 olasılık haritası", "Taslak olarak işaretli analiz alanları", "Açılır “BO nasıl yapıyor?” bölümü", "Başlangıçta kapalı yöntem karşılaştırması"] },
     { id: "masaustu-gecmis", label: "3 · Masaüstü geçmiş tahminler", device: "desktop", src: "gecmis-tahminler.html", url: "bo-bet / geçmiş-tahminler",
-      desc: "Şeffaflık sayfası: gerçek 63 maçlık test sonucu ve açık uyarı.",
+      desc: "Şeffaflık sayfası: 10 ligde 1.084 maçlık retrospektif test sonucu ve açık uyarı.",
       points: ["%61,9 doğru sonuç oranı", "63 kutuluk oran şeridi", "Lig, tarih ve sonuç filtreleri", "Görünür retrospektif test uyarısı"] },
     { id: "mobil-ana", label: "4 · Mobil ana sayfa", device: "mobile", src: "index.html", url: "",
       desc: "Dikey kartlar, kaydırılabilir filtreler ve alt navigasyon.",

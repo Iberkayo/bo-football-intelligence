@@ -47,15 +47,19 @@ eq("besiktas → Beşiktaş", u.fold("Beşiktaş").includes(u.fold("besiktas")),
 eq("FENERBAHCE → Fenerbahçe", u.fold("Fenerbahçe").includes(u.fold("FENERBAHÇE")), true);
 eq("istanbul İ", u.fold("İstanbul"), "istanbul");
 
-// 5) Gerçek 63 maçın doğrulaması ve geriye dönük test özeti
+// 5) Gerçek geçmiş maçların (v2, 10 lig) doğrulaması ve geriye dönük test özeti
 const histDoc = JSON.parse(fs.readFileSync(path.join(root, "data", "history.json"), "utf8"));
 const hist = BO.history.parse(histDoc);
-eq("gerçek maç sayısı", hist.rows.length, 63);
-eq("Ridge doğru", hist.correct, 39);
-eq("Ridge yanlış", hist.wrong, 24);
-eq("alternatif yöntem doğru", hist.alternativeCorrect, 37);
-eq("alternatif yöntem yanlış", hist.alternativeWrong, 26);
-eq("6 lig", new Set(hist.rows.map(r => r.league)).size, 6);
+eq("gerçek maç sayısı", hist.rows.length, 1084);
+eq("Ridge doğru", hist.correct, 568);
+eq("Ridge yanlış", hist.wrong, 516);
+eq("v2: karşılaştırma modeli yok", hist.alternativeCorrect, null);
+eq("10 lig", new Set(hist.rows.map(r => r.league)).size, 10);
+const v2extra = JSON.parse(JSON.stringify(histDoc));
+v2extra.matches[0].opportunity_c = v2extra.matches[0].ridge;
+let v2rejected = false;
+try { BO.history.parse(v2extra); } catch (_) { v2rejected = true; }
+eq("v2'de ek model reddedilir", v2rejected, true);
 eq("retrospektif durum", hist.data_status, "RETROSPECTIVE_REPLAY_NOT_PROSPECTIVE");
 eq("sahte geçmiş kayıt yok", Object.prototype.hasOwnProperty.call(BO, "PAST_SAMPLES"), false);
 const altered = JSON.parse(JSON.stringify(histDoc));
@@ -64,7 +68,7 @@ let rejected = false;
 try { BO.history.parse(altered); } catch (_) { rejected = true; }
 eq("bozulmuş skor reddedilir", rejected, true);
 eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO.BACKTEST.total);
-eq("oran %61,9", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
+eq("oran %52,4", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
 
 // 6) Tüm maçların takım/lig kaydı var
 const missing = BO.MATCHES.filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));

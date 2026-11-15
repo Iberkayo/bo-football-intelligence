@@ -14,6 +14,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 LEAGUES = {203:"superlig",39:"premier",140:"laliga",135:"seriea",78:"bundesliga",61:"ligue1",88:"eredivisie",94:"primeira",40:"championship",144:"jupiler"}
+LEAGUE_SQL = ",".join(str(int(k)) for k in LEAGUES)  # ints only, no user input
 ALLOWED_SOURCE_AGE_HOURS = 36
 
 
@@ -45,7 +46,7 @@ def export(silver: Path, *, from_day: date, days: int = 21,
     until = from_day + timedelta(days=days)
     conn = sqlite3.connect(f"file:{silver.resolve().as_posix()}?mode=ro",uri=True)
     try:
-        rows = conn.execute("""
+        rows = conn.execute(f"""
             SELECT f.canonical_fixture_id,f.league_id,f.kickoff_utc,
                 h.provider_name,a.provider_name,f.fixture_status,
                 f.observed_at_utc,f.source_sha256
@@ -55,13 +56,13 @@ def export(silver: Path, *, from_day: date, days: int = 21,
             WHERE f.fixture_status='NS'
                 AND substr(f.kickoff_utc,1,10)>=?
                 AND substr(f.kickoff_utc,1,10)<?
-                AND f.league_id IN (203,39,140,135,78,61)
+                AND f.league_id IN ({LEAGUE_SQL})
             ORDER BY f.kickoff_utc,f.canonical_fixture_id
         """,(from_day.isoformat(),until.isoformat())).fetchall()
         # A refresh may contain zero upcoming matches during an international break.
-        latest = conn.execute("""
+        latest = conn.execute(f"""
             SELECT MAX(observed_at_utc) FROM fixtures
-            WHERE league_id IN (203,39,140,135,78,61)
+            WHERE league_id IN ({LEAGUE_SQL})
               AND observed_at_utc IS NOT NULL
         """).fetchone()[0]
     finally:
