@@ -102,9 +102,9 @@ BO.MATCHES = [
 BO.BACKTEST = {
   range: "1 Ağu – 14 Kas 2026 · 10 lig",
   total: 1084,
-  correct: 568,
-  wrong: 516,
-  accuracyText: "52,4",
+  correct: 572,
+  wrong: 512,
+  accuracyText: "52,8",
 };
 
 /* Gerçek geçmiş maçlar data/history.json dosyasından doğrulanarak yüklenir.

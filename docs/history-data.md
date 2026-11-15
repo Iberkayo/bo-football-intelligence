@@ -5,9 +5,10 @@ dosyasını okuyor.
 
 ## İçerik
 - Kapsam: **1 Ağustos – 14 Kasım 2026** (Türkiye tarihi), **10 lig**, **1.084 maç**.
-- Model: yalnız Ridge champion, `ridge_poisson`, ile aynı ayarlar.
-- Sonuç: en olası görülen sonuç **568** maçta gerçekleşti (%52,4).
-- Lig bazında doğru seçim oranı: Serie A %60, Belçika %61, Primeira %57, Ligue 1 %57, La Liga %54, Süper Lig %53, Bundesliga %51, Premier %50, Eredivisie %49, Championship %42.
+- Model: yalnız Ridge champion, `ridge_poisson`, ile aynı ayarlar. Canlı dondurma gibi her maç günü yeniden eğitilir (`replay_refit_days: 1`, E6 `ridge_daily` kolu).
+- Sonuç: en olası görülen sonuç **572** maçta gerçekleşti (%52,8).
+- Lig bazında doğru seçim oranı: Belçika %62, Serie A %61, Primeira %58, Ligue 1 %57, Süper Lig %55, La Liga %54, Premier %51, Eredivisie %49, Bundesliga %49, Championship %41.
+- 15 Kasım güncellemesi: önceki sürüm modeli 14 günde bir yeniden eğitiyordu (568 doğru, %52,4). Canlı sistem her çalışmada yeniden eğittiği için replay ona eşitlendi. Model ve ayarları değişmedi.
 
 ## Yöntem
 - Tarih bazlı replay: her gün, o günün hiçbir sonucu görülmeden tahmin edilir; eğitimde yalnız daha önceki günler kullanılır.
@@ -16,8 +17,8 @@ dosyasını okuyor.
 - E5 gölge modeli ve Opportunity C bu dosyada **yok**.
 
 ## Üretim (özel taraf, sıfır API isteği)
-1. `bo-bet`: `python -m bobet.e5_xg_strength` ile `research/site_history_20261115_ten_leagues_plan.json` planı çalıştırılır. Çıktı: özel `results\site-history-10l-20261115`.
-2. `python -m bobet.site_history_export` yalnız Ridge kolunu alır, skor ve kimlikleri Silver ile karşılaştırır, sonra staging klasörüne `history.json` yazar. Git checkout içine yazmayı reddeder.
+1. `bo-bet`: `python -m bobet.e6_ridge_fixes` ile `preregistration/e6_20261115_ridge_fixes_exploratory.json` planı çalıştırılır. Çıktı: özel `results\e6-ridge-fixes-20261115`.
+2. `python -m bobet.site_history_export --arm ridge_daily` yalnız champion replay kolunu alır, skor ve kimlikleri Silver ile karşılaştırır, sonra staging klasörüne `history.json` yazar. Git checkout içine yazmayı reddeder.
 3. Dosya bu repoya kopyalanır. `node tools/logic-test.js` sayıları doğrular.
 
 `tools/import_history_csv.py`, V1 (2–8 Kasım, 63 maç, SHA'ya kilitli) içindir ve tarihsel kayıt olarak durur.

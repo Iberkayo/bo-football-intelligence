@@ -51,8 +51,8 @@ eq("istanbul İ", u.fold("İstanbul"), "istanbul");
 const histDoc = JSON.parse(fs.readFileSync(path.join(root, "data", "history.json"), "utf8"));
 const hist = BO.history.parse(histDoc);
 eq("gerçek maç sayısı", hist.rows.length, 1084);
-eq("Ridge doğru", hist.correct, 568);
-eq("Ridge yanlış", hist.wrong, 516);
+eq("Ridge doğru", hist.correct, 572);
+eq("Ridge yanlış", hist.wrong, 512);
 eq("v2: karşılaştırma modeli yok", hist.alternativeCorrect, null);
 eq("10 lig", new Set(hist.rows.map(r => r.league)).size, 10);
 const v2extra = JSON.parse(JSON.stringify(histDoc));
@@ -74,7 +74,7 @@ eq("salı yeni hafta", BO.history.weekOf("2026-11-10"), "2026-11-10");
 eq("hafta etiketi", BO.history.weekLabel("2026-11-03"), "3–9 Kasım");
 eq("ay geçişi", BO.history.weekLabel("2026-10-27"), "27 Ekim – 2 Kasım");
 eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO.BACKTEST.total);
-eq("oran %52,4", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
+eq("oran %52,8", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
 
 // 6) Tüm maçların takım/lig kaydı var
 const missing = BO.MATCHES.filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
