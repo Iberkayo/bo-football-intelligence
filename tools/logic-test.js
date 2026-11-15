@@ -67,6 +67,12 @@ altered.matches[0].score = [99, 99];
 let rejected = false;
 try { BO.history.parse(altered); } catch (_) { rejected = true; }
 eq("bozulmuş skor reddedilir", rejected, true);
+// Maç haftası salı–pazartesi: cuma–pazartesi turu aynı haftada
+eq("pazartesi önceki salıya bağlı", BO.history.weekOf("2026-11-09"), "2026-11-03");
+eq("cuma aynı hafta", BO.history.weekOf("2026-11-06"), "2026-11-03");
+eq("salı yeni hafta", BO.history.weekOf("2026-11-10"), "2026-11-10");
+eq("hafta etiketi", BO.history.weekLabel("2026-11-03"), "3–9 Kasım");
+eq("ay geçişi", BO.history.weekLabel("2026-10-27"), "27 Ekim – 2 Kasım");
 eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO.BACKTEST.total);
 eq("oran %52,4", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
 

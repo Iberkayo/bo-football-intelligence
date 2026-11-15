@@ -106,10 +106,14 @@
       if (!response.ok) throw new Error("Geçmiş veri HTTP " + response.status);
       const dataset = BO.history.parse(await response.json());
       const rows = dataset.rows;
-      const state = { league: "all", date: "all", result: "all" };
-      const dates = Array.from(new Set(rows.map(r => r.date))).sort().reverse();
-      dateSel.innerHTML = '<option value="all">Tüm tarihler</option>' +
-        dates.map(d => '<option value="' + d + '">' + u.isoLong(d) + '</option>').join('');
+      const state = { league: "all", week: "all", result: "all" };
+      rows.forEach(r => { r.week = BO.history.weekOf(r.date); });
+      const weeks = Array.from(new Set(rows.map(r => r.week))).sort().reverse();
+      dateSel.innerHTML = '<option value="all">Tüm haftalar</option>' +
+        weeks.map(w => '<option value="' + w + '">' + u.esc(BO.history.weekLabel(w)) +
+          ' haftası</option>').join('');
+      state.week = weeks[0];  // varsayılan: en son maç haftası
+      dateSel.value = state.week;
       tag.textContent = dataset.total + " doğrulanmış test kaydı";
       renderRecord(dataset, rows, state.league);
 
@@ -125,13 +129,13 @@
       function renderList() {
         const filtered = rows.filter(r =>
           (state.league === "all" || r.league === state.league) &&
-          (state.date === "all" || r.date === state.date) &&
+          (state.week === "all" || r.week === state.week) &&
           (state.result === "all" || (state.result === "ok") === r.ok)
         );
         if (!filtered.length) {
           list.innerHTML = '<div class="empty" style="border:0;border-radius:0">' +
             ui.emptyArt() + '<h3>Bu filtrelerle kayıt bulunamadı</h3>' +
-            '<p>Farklı bir lig veya tarih seçmeyi deneyin.</p>' +
+            '<p>Farklı bir lig veya hafta seçmeyi deneyin.</p>' +
             '<div class="empty__actions"><button class="btn btn--ghost" type="button" data-act="reset">' +
             'Filtreleri temizle</button></div></div>';
           return;
@@ -157,11 +161,11 @@
         const button = event.target.closest("[data-league]"); if (!button) return;
         selectLeague(button.dataset.league);
       });
-      dateSel.addEventListener("change", () => { state.date = dateSel.value; renderList(); });
+      dateSel.addEventListener("change", () => { state.week = dateSel.value; renderList(); });
       resSel.addEventListener("change", () => { state.result = resSel.value; renderList(); });
       list.addEventListener("click", event => {
         if (!event.target.closest('[data-act="reset"]')) return;
-        state.league = state.date = state.result = "all";
+        state.league = state.week = state.result = "all";
         dateSel.value = resSel.value = "all";
         renderChips(); renderList(); renderRecord(dataset, rows, "all");
       });

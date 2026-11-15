@@ -72,5 +72,19 @@ BO.history = (function () {
       data_status: doc.data_status
     };
   }
-  return { parse };
+  /* Maç haftası: salıdan pazartesiye. Hafta başlangıcının (salı) ISO tarihini döndürür. */
+  function weekOf(isoDate) {
+    ensure(/^\d{4}-\d{2}-\d{2}$/.test(isoDate), "tarih");
+    const d = new Date(isoDate + "T00:00:00Z");
+    d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 5) % 7);
+    return d.toISOString().slice(0, 10);
+  }
+  function weekLabel(start) {
+    const a = new Date(start + "T12:00:00Z"), b = new Date(a.getTime() + 6 * 86400000);
+    const f = (x, o) => x.toLocaleDateString("tr-TR", { timeZone: "UTC", ...o });
+    return a.getUTCMonth() === b.getUTCMonth()
+      ? f(a, { day: "numeric" }) + "–" + f(b, { day: "numeric", month: "long" })
+      : f(a, { day: "numeric", month: "long" }) + " – " + f(b, { day: "numeric", month: "long" });
+  }
+  return { parse, weekOf, weekLabel };
 })();
