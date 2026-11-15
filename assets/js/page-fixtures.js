@@ -96,17 +96,28 @@
       {timeZone:"Europe/Istanbul",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
     return "Dondurulma: "+t+" · Kaydedilmiş araştırma tahmini";
   }
+  function frozenLine(m) {
+    const age=BO.paperMarkets.frozenAge(paper.byFixture.get(m.id).frozen_at_utc,Date.now());
+    return paperNote(m).split(" · ")[0]+(age.label?" · "+age.label:"");
+  }
+  function ageBadge(m) {
+    const forecast=paper.byFixture.get(m.id);
+    if(!forecast) return "";
+    const age=BO.paperMarkets.frozenAge(forecast.frozen_at_utc,Date.now());
+    return age.label?'<span class="tag tag--draft fixture-age">'+u.esc(age.label)+'</span>':"";
+  }
   function card(m) {
     const l=u.league(m.league);
     return '<article class="match-card fixture-card" aria-label="'+u.esc(m.home+" – "+m.away+", "+m.dateTR+" "+m.timeTR)+
       '"><div class="match-card__top"><span class="match-card__league">'+ui.leagueMark(m.league)+
-      '<span>'+u.esc(l.short)+'</span></span><span class="tag">Maç takvimi</span></div>'+
+      '<span>'+u.esc(l.short)+'</span></span>'+(ageBadge(m)||'<span class="tag">Maç takvimi</span>')+'</div>'+
       '<div class="match-card__teams"><div class="mc-team"><span class="mc-team__name">'+u.esc(m.home)+'</span></div>'+
       '<div class="mc-center"><span class="mc-center__time">'+u.esc(m.timeTR)+'</span><span class="mc-center__day">'+
       u.esc(shortDate(Math.round((new Date(m.dateTR+"T00:00:00Z")-new Date(isoToday()+"T00:00:00Z"))/86400000)))+'</span></div>'+
       '<div class="mc-team"><span class="mc-team__name">'+u.esc(m.away)+'</span></div></div>'+
       (paperProb(m)?'<div class="fixture-card__prob">'+paperProb(m)+'</div>':"")+
-      (paper.byFixture.has(m.id)?BO.paperMarkets.rows(paper.byFixture.get(m.id)):"")+
+      (paper.byFixture.has(m.id)?BO.paperMarkets.headline(paper.byFixture.get(m.id))+
+        BO.paperMarkets.rows(paper.byFixture.get(m.id)):"")+
       '<div class="fixture-card__foot">'+statusLine(m)+'<span class="fixture-card__note">'+
       u.esc(paperNote(m))+'</span></div></article>';
   }
@@ -118,7 +129,8 @@
       (paper.byFixture.has(m.id)?
         '<span class="fixture-row__paper">1 %'+u.norm(paper.byFixture.get(m.id).p)[0]+
         ' · X %'+u.norm(paper.byFixture.get(m.id).p)[1]+
-        ' · 2 %'+u.norm(paper.byFixture.get(m.id).p)[2]+'</span>':
+        ' · 2 %'+u.norm(paper.byFixture.get(m.id).p)[2]+'</span>'+
+        '<small class="fixture-row__frozen">'+u.esc(frozenLine(m))+'</small>':
         statusLine(m))+'</span></div>';
   }
   function renderMatches() {
