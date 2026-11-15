@@ -16,6 +16,7 @@
   let feed={publication_state:"AWAITING_VERIFIED_REFRESH",fixtures:[],snapshot_at_utc:null};
   let paper={byFixture:new Map(),total:0,state:"NO_VERIFIED_FROZEN_FORECASTS"};
   let paperError=false;
+  let confStats=null;  // geçmiş testte güven seviyesi başına isabet (data/history.json)
   clear.innerHTML=BO.icon("close");
   search.value=state.query;
 
@@ -106,6 +107,10 @@
     const age=BO.paperMarkets.frozenAge(forecast.frozen_at_utc,Date.now());
     return age.label?'<span class="tag tag--draft fixture-age">'+u.esc(age.label)+'</span>':"";
   }
+  function confBadge(m) {
+    const forecast=paper.byFixture.get(m.id);
+    return forecast?BO.confidence.badge(forecast.p,confStats,u.esc):"";
+  }
   function card(m) {
     const l=u.league(m.league);
     return '<article class="match-card fixture-card" aria-label="'+u.esc(m.home+" – "+m.away+", "+m.dateTR+" "+m.timeTR)+
@@ -115,7 +120,8 @@
       '<div class="mc-center"><span class="mc-center__time">'+u.esc(m.timeTR)+'</span><span class="mc-center__day">'+
       u.esc(shortDate(Math.round((new Date(m.dateTR+"T00:00:00Z")-new Date(isoToday()+"T00:00:00Z"))/86400000)))+'</span></div>'+
       '<div class="mc-team"><span class="mc-team__name">'+u.esc(m.away)+'</span></div></div>'+
-      (paperProb(m)?'<div class="fixture-card__prob">'+paperProb(m)+'</div>':"")+
+      (paperProb(m)?'<div class="fixture-card__prob">'+paperProb(m)+'</div>'+
+        '<div class="fixture-card__conf">'+confBadge(m)+'</div>':"")+
       (paper.byFixture.has(m.id)?BO.paperMarkets.headline(paper.byFixture.get(m.id))+
         BO.paperMarkets.rows(paper.byFixture.get(m.id)):"")+
       '<div class="fixture-card__foot">'+statusLine(m)+'<span class="fixture-card__note">'+
@@ -130,6 +136,7 @@
         '<span class="fixture-row__paper">1 %'+u.norm(paper.byFixture.get(m.id).p)[0]+
         ' · X %'+u.norm(paper.byFixture.get(m.id).p)[1]+
         ' · 2 %'+u.norm(paper.byFixture.get(m.id).p)[2]+'</span>'+
+        '<span class="fixture-row__conf">'+confBadge(m)+'</span>'+
         '<small class="fixture-row__frozen">'+u.esc(frozenLine(m))+'</small>':
         statusLine(m))+'</span></div>';
   }
@@ -177,6 +184,14 @@
         console.error("BO PAPER tahminleri doğrulanamadı",predictionError);
         paper={byFixture:new Map(),total:0,state:"NO_VERIFIED_FROZEN_FORECASTS"};
         paperError=true;
+      }
+      try {
+        const rh=await fetch("data/history.json",{cache:"no-cache"});
+        if(!rh.ok)throw new Error("Geçmiş HTTP "+rh.status);
+        confStats=BO.confidence.stats(BO.history.parse(await rh.json()).rows);
+      } catch(historyError) {
+        console.error("BO geçmiş isabet oranları yüklenemedi",historyError);
+        confStats=null;  // etiket oranı olmadan gösterilir
       }
       if(!explicitDay&&!state.query) {
         const first=Array.from({length:MAX_DAYS},(_,i)=>i).find(i=>matchesFor(i).length>0);

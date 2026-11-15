@@ -59,24 +59,33 @@
       '<div class="league-rates"><div class="league-rates__head"><strong>Lig bazında doğru seçim</strong>' +
       '<button class="league-rates__all" type="button" data-league="all" aria-pressed="' +
       (league === "all") + '">Tüm ligler · %' + pctText(dataset.correct, dataset.total) + '</button></div>' +
-      byLeague.map(leagueRow).join('') + '</div></div>';
+      byLeague.map(leagueRow).join('') + '</div>' + confHTML(rows, scope) + '</div>';
+  }
+
+  // Güven seviyesine göre isabet: lig filtresini izler, eşikler sabittir.
+  function confHTML(rows, scope) {
+    const st = BO.confidence.stats(rows);
+    return '<div class="conf-rates"><div class="league-rates__head"><strong>Güven seviyesine göre doğru seçim</strong>' +
+      '<span class="muted">' + u.esc(scope) + '</span></div>' +
+      BO.confidence.LEVELS.map(l => {
+        const s = st[l.id], rate = s.n ? s.correct / s.n * 100 : 0;
+        return '<div class="conf-rates__row"><span class="conf conf--' + l.id + '">' + l.label + '</span>' +
+          '<span class="conf-rates__bar" aria-hidden="true"><i style="width:' + rate.toFixed(1) + '%"></i></span>' +
+          '<span class="conf-rates__val"><b>' + (s.n ? '%' + pctText(s.correct, s.n) : '–') + '</b><small>' +
+          s.correct + ' / ' + s.n + ' maç</small></span></div>';
+      }).join('') +
+      '<p class="conf-rates__note">Yüksek: en olası sonuç ≥ %60 · Orta: %45–60 · Düşük: &lt; %45. ' +
+      'Eşikler önceki sezon verisiyle belirlendi. Bilgi amaçlıdır, bahis önerisi değildir.</p></div>';
   }
 
   const outcome = (i, r) =>
     '<span class="outcome"><i class="' + ["h", "d", "a"][i] + '"></i><span>' +
     u.esc(u.outcomeLabel(i, r)) + '</span></span>';
 
-  // Betimleyici belirsizlik etiketi: en yüksek iki olasılığın farkı.
-  // Kalibrasyon/güven aralığı değildir, modelin sınıf seçimini değiştirmez.
   const pct = n => (n * 100).toLocaleString("tr-TR", { maximumFractionDigits: 1 });
-  const balance = probabilities => {
-    const sorted = [...probabilities].sort((a, b) => b - a);
-    const gap = sorted[0] - sorted[1];
-    return gap <= 0.06 + 1e-10 ? "Çok dengeli" : gap <= 0.15 + 1e-10 ? "Dengeli" : "";
-  };
   function rowHTML(r) {
     const h = u.team(r.home), a = u.team(r.away);
-    const tier = balance(r.p);
+    const tier = BO.confidence.badge(r.p, null, u.esc);  // oranlar özet panelinde
     const pickText = r.pick === 1 ? "Beraberlik" : (r.pick === 0 ? h.name : a.name) + " galibiyeti";
     const split = "1 %" + pct(r.p[0]) + " · X %" + pct(r.p[1]) + " · 2 %" + pct(r.p[2]);
     return '<article class="past-row" aria-label="' +
@@ -90,7 +99,7 @@
       '<div class="past-row__pick"><span class="cell-label">En olası sonuç</span>' +
       '<div class="past-pick__main">' + '<span class="past-pick__name">' + u.esc(pickText) +
       ' <b>%' + pct(r.p[r.pick]) + '</b></span>' +
-      (tier ? '<span class="past-pick__tier">' + tier + '</span>' : '') + '</div>' +
+      tier + '</div>' +
       '<span class="past-pick__prob" aria-label="Üç olasılık: ' + u.esc(split) + '">' +
       u.esc(split) + '</span></div>' +
       '<div class="past-row__actual"><span class="cell-label">Gerçekleşen</span>' +

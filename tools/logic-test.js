@@ -7,7 +7,7 @@ const root = path.join(__dirname, "..");
 const ctx = { window: {}, console, location: { search: "", pathname: "/" }, history: { replaceState() {} }, URLSearchParams, document: {} };
 ctx.window = ctx;
 vm.createContext(ctx);
-["data.js", "icons.js", "core.js", "history.js"].forEach((f) => vm.runInContext(fs.readFileSync(path.join(root, "assets/js", f), "utf8"), ctx));
+["data.js", "icons.js", "core.js", "history.js", "confidence.js"].forEach((f) => vm.runInContext(fs.readFileSync(path.join(root, "assets/js", f), "utf8"), ctx));
 const BO = ctx.BO, u = BO.util;
 
 let fail = 0;
@@ -75,6 +75,22 @@ eq("hafta etiketi", BO.history.weekLabel("2026-11-03"), "3–9 Kasım");
 eq("ay geçişi", BO.history.weekLabel("2026-10-27"), "27 Ekim – 2 Kasım");
 eq("gerçek test toplamı tutarlı", BO.BACKTEST.correct + BO.BACKTEST.wrong, BO.BACKTEST.total);
 eq("oran %52,8", ((hist.correct / hist.total) * 100).toFixed(1).replace(".", ","), BO.BACKTEST.accuracyText);
+
+// 5b) Güven seviyesi: sabit eşikler ve geçmiş isabet oranları
+const C = BO.confidence;
+eq("≥%60 yüksek", C.level([0.60, 0.25, 0.15]).id, "high");
+eq("%59,9 orta", C.level([0.599, 0.25, 0.151]).id, "mid");
+eq("%45 orta", C.level([0.45, 0.30, 0.25]).id, "mid");
+eq("%44,9 düşük", C.level([0.449, 0.30, 0.251]).id, "low");
+eq("deplasman favorisi de sayılır", C.level([0.15, 0.20, 0.65]).id, "high");
+const cs = C.stats(hist.rows);
+eq("seviye sayıları", [cs.high.n, cs.mid.n, cs.low.n], [225, 441, 418]);
+eq("seviyeler toplamı = tüm maçlar", cs.high.n + cs.mid.n + cs.low.n, hist.total);
+eq("seviye doğruları toplamı", cs.high.correct + cs.mid.correct + cs.low.correct, hist.correct);
+eq("yüksek > orta > düşük isabet", cs.high.correct / cs.high.n > cs.mid.correct / cs.mid.n && cs.mid.correct / cs.mid.n > cs.low.correct / cs.low.n, true);
+eq("etiket metni", C.text([0.7, 0.2, 0.1], cs), "Yüksek güven · geçmişte %" + C.rateText(cs.high));
+eq("oran yoksa yalnız etiket", C.text([0.5, 0.3, 0.2], null), "Orta güven");
+eq("rozet kaçışlı", C.badge([0.7, 0.2, 0.1], cs, u.esc).includes('class="conf conf--high"'), true);
 
 // 6) Tüm maçların takım/lig kaydı var
 const missing = BO.MATCHES.filter((m) => !BO.TEAMS[m.home] || !BO.TEAMS[m.away] || !BO.LEAGUES.find((l) => l.id === m.league));
