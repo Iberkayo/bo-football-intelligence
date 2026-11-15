@@ -780,6 +780,15 @@ html[data-theme="light"] .draft {
 }
 .paper-market__option b { font-weight: 700; }
 .paper-market__option small { color: var(--text-3); font-size: 0.69rem; margin-left: 4px; }
+.paper-headline {
+  display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px;
+  font-size: 0.75rem; color: var(--text-2); font-variant-numeric: tabular-nums;
+}
+.paper-headline__market { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; min-width: 0; }
+.paper-headline__name { color: var(--text-3); font-weight: 700; }
+.paper-headline__opt b { color: var(--text); font-weight: 750; }
+.fixture-row__frozen { display: block; margin-top: 3px; font-size: 0.7rem; color: var(--text-3); text-align: right; }
+@media (max-width: 640px) { .fixture-row__frozen { text-align: left; } }
 @media (max-width: 560px) {
   .paper-markets > summary { flex-wrap: wrap; }
   .paper-market__option { font-size: 0.69rem; }

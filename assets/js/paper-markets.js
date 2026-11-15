@@ -38,11 +38,29 @@ BO.paperMarkets = (function () {
     if(p<=0 || 1/p>1000)return "—";
     return (1/p).toLocaleString("tr-TR",{minimumFractionDigits:2,maximumFractionDigits:2});
   }
+  const HEADLINE=["g25","btts"];
+  /* Kartın üstünde: 2,5 Alt/Üst ve KG Var/Yok (yalnız olasılık). */
+  function headline(f) {
+    const esc=BO.util.esc;
+    return '<div class="paper-headline" aria-label="Ridge PAPER gol piyasaları">'+
+      calculate(f).filter(m=>HEADLINE.includes(m.id)).map(m=>
+        '<span class="paper-headline__market"><span class="paper-headline__name">'+
+        esc(m.id==="g25"?"2,5 gol":"KG")+'</span>'+m.options.map(o=>
+          '<span class="paper-headline__opt">'+esc(o.label)+' <b>'+esc(pct(o.p))+'</b></span>'
+        ).join("")+'</span>').join("")+'</div>';
+  }
+  /* Dondurulma yaşı; 1 günden küçükse rozet yok. */
+  function frozenAge(frozenIso, nowMs) {
+    const t=Date.parse(frozenIso);
+    assert(Number.isFinite(t) && Number.isFinite(nowMs));
+    const days=Math.floor(Math.max(0,nowMs-t)/86400000);
+    return {days,label:days>=1?days+" gün önce donduruldu":null};
+  }
   function rows(f) {
-    const markets=calculate(f);
+    const markets=calculate(f).filter(m=>!HEADLINE.includes(m.id));
     const esc=BO.util.esc;
     return '<details class="paper-markets">'+
-      '<summary>Diğer piyasalar · Ridge PAPER <span>5 piyasa</span></summary>'+
+      '<summary>Diğer piyasalar · Ridge PAPER <span>'+markets.length+' piyasa</span></summary>'+
       '<p class="paper-markets__caption">Model olasılığı ve teorik adil oran. Bunlar gerçek bookmaker teklifleri değildir.</p>'+
       '<div class="paper-markets__list">'+markets.map(m=>
         '<div class="paper-market"><span class="paper-market__name">'+esc(m.label)+'</span>'+
@@ -52,5 +70,5 @@ BO.paperMarkets = (function () {
         ).join("")+'</div></div>'
       ).join("")+'</div></details>';
   }
-  return {calculate,rows};
+  return {calculate,rows,headline,frozenAge};
 })();
