@@ -1,0 +1,86 @@
+{
+  "schema": "bo-results/v1",
+  "data_status": "PROSPECTIVE_FROZEN_BEFORE_KICKOFF",
+  "publication_state": "VERIFIED_PAPER_SETTLEMENT",
+  "model_version": "ridge_poisson_api_silver_v1",
+  "source": "PUBLISHED_PREDICTIONS_PLUS_SILVER_FINAL_SCORES",
+  "exported_at_utc": "2026-11-20T22:46:48.424194+00:00",
+  "summary": {
+    "total": 3,
+    "hits": 2
+  },
+  "results": [
+    {
+      "fixture_id": "api-football:fixture:1575221",
+      "league": "bundesliga",
+      "home": "Bayern München",
+      "away": "1. FC Köln",
+      "kickoff_utc": "2026-11-20T19:30:00+00:00",
+      "frozen_at_utc": "2026-11-14T15:34:02.971494+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "2723a8f611fe38e34c5930ae81cda520aa3baa3d02235f6e85205bc52a1afc20",
+      "p": [
+        0.879764839866016,
+        0.07937338701714626,
+        0.04086177311683867
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        1
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-20T21:42:59.360997+00:00",
+      "score_source_sha256": "b1c44aa2c02b24221b7a408424b24c7098f9937bd5a8011eecb48346a4e2290c"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552827",
+      "league": "ligue1",
+      "home": "Estac Troyes",
+      "away": "Le Havre",
+      "kickoff_utc": "2026-11-20T19:45:00+00:00",
+      "frozen_at_utc": "2026-11-14T15:34:02.971494+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "aca73061601a7abd2e9d462b5b627f5aaa64573e16d492b0bc9ceedcc2b2a768",
+      "p": [
+        0.3949953419884562,
+        0.2866609346132027,
+        0.3183437233983412
+      ],
+      "pick": "1",
+      "score": [
+        3,
+        1
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-20T21:43:00.355855+00:00",
+      "score_source_sha256": "4f86c6dbc821f61d65dbda6d15f5d16dd297992f102fe87eafa30b37edc69a52"
+    },
+    {
+      "fixture_id": "api-football:fixture:1558682",
+      "league": "jupiler",
+      "home": "Cercle Brugge",
+      "away": "KVC Westerlo",
+      "kickoff_utc": "2026-11-20T19:45:00+00:00",
+      "frozen_at_utc": "2026-11-15T05:31:33.173290+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "8678937f50f87a58cfff30bdf2dcc355dd79d717fbef3f1e7bd42cabb9c54b4d",
+      "p": [
+        0.4857721544635173,
+        0.22075599789694425,
+        0.29347184763953854
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-20T21:43:03.533265+00:00",
+      "score_source_sha256": "a8ba3a342f8401b1fe27945b9c6a139d0ea3487fb175ec91a672da1e94c516b9"
+    }
+  ]
+}
