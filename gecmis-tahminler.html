@@ -28,6 +28,17 @@
       <p class="lead">Modelimizi, sonucu zaten bilinen maçlar üzerinde sınadık: her maç için önce en olası sonucu seçtik, sonra gerçekleşen sonuçla karşılaştırdık.</p>
     </section>
 
+    <section class="section" aria-labelledby="live-title">
+      <div class="section-head">
+        <div>
+          <h2 id="live-title">Maç öncesi kaydedilen tahminlerin sonuçları</h2>
+          <p>Bu tahminler maç başlamadan önce dondurulup sitede yayınlandı ve sonradan değiştirilmedi. Gerçek skor maç bittikten sonra eklenir. Retrospektif testten ayrı tutulur. Bahis veya kupon önerisi değildir.</p>
+        </div>
+        <span class="tag" id="live-tag" aria-live="polite">Yükleniyor…</span>
+      </div>
+      <div class="past-list" id="live-list"></div>
+    </section>
+
     <div class="notice notice--warn" style="margin-top:var(--s-5)" role="note">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg>
       <div><strong>Bu sonuçlar geçmiş maç verileri üzerinde yapılan testlerden elde edilmiştir. Canlı tahmin performansı değildir.</strong> Gelecekteki maçlarda aynı oranın gerçekleşeceği garanti edilemez.</div>
@@ -38,7 +49,7 @@
     <section class="section" aria-labelledby="list-title">
       <div class="section-head">
         <div>
-          <h2 id="list-title">Geçmiş maçlar</h2>
+          <h2 id="list-title">Geçmiş maç testi (retrospektif)</h2>
           <p>Her satırda geçmişe dönük modelin üç olasılığı, en yüksek olasılıklı sonuç ve gerçek skor yer alıyor. Güven etiketi en olası sonucun olasılığına göre verilir (Yüksek ≥ %60, Orta %45–60, Düşük &lt; %45); her seviyenin bu testteki isabet oranı özet kartında yer alır. Bahis veya kupon önerisi değildir.</p>
         </div>
         <span class="tag" id="past-data-tag" aria-live="polite">Yükleniyor…</span>
@@ -71,5 +82,7 @@
 <script src="assets/js/history.js"></script>
 <script src="assets/js/confidence.js"></script>
 <script src="assets/js/page-past.js"></script>
+<script src="assets/js/results-feed.js"></script>
+<script src="assets/js/page-results.js"></script>
 </body>
 </html>

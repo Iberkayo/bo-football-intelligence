@@ -20,7 +20,12 @@ const livePredictions=JSON.parse(fs.readFileSync(path.join(__dirname,"../data/pr
 assert.equal(livePredictions.publication_state,"VERIFIED_PAPER_LEDGER_EXPORT");
 const live=validator.parse(livePredictions,liveFixtures);
 assert.ok(live.total>0,"published predictions should not be silently empty");
-assert.equal(live.byFixture.size,live.total,"published forecasts must match fixture identities");
+// The feed is append-only: records whose match has started leave the NS schedule but stay published.
+// Any other unmatched record (e.g. an upcoming fixture whose kickoff moved) still fails.
+const snapshotAt=Date.parse(liveFixtures.snapshot_at_utc);
+const unmatched=livePredictions.forecasts.filter(p=>!live.byFixture.has(p.fixture_id));
+assert.ok(unmatched.every(p=>Date.parse(p.kickoff_utc)<=snapshotAt),
+  "unmatched published forecasts must belong to matches that already kicked off");
 const t={
  schema:"bo-predictions/v1", source:"BO_BET_APPEND_ONLY_LEDGER",
  publication_state:"VERIFIED_PAPER_LEDGER_EXPORT",
