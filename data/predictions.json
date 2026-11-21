@@ -3,8 +3,8 @@
   "publication_state": "VERIFIED_PAPER_LEDGER_EXPORT",
   "source": "BO_BET_APPEND_ONLY_LEDGER",
   "model_version": "ridge_poisson_api_silver_v1",
-  "fixtures_snapshot_at_utc": "2026-11-20T21:43:03.533265+00:00",
-  "exported_at_utc": "2026-11-20T22:46:47.711780+00:00",
+  "fixtures_snapshot_at_utc": "2026-11-21T07:20:51.307222+00:00",
+  "exported_at_utc": "2026-11-21T07:52:16.150382+00:00",
   "forecasts": [
     {
       "fixture_id": "api-football:fixture:1575221",

@@ -4,9 +4,9 @@
   "publication_state": "VERIFIED_PAPER_SETTLEMENT",
   "model_version": "ridge_poisson_api_silver_v1",
   "source": "PUBLISHED_PREDICTIONS_PLUS_SILVER_FINAL_SCORES",
-  "exported_at_utc": "2026-11-20T22:46:48.424194+00:00",
+  "exported_at_utc": "2026-11-21T07:52:16.560183+00:00",
   "summary": {
-    "total": 3,
+    "total": 4,
     "hits": 2
   },
   "results": [
@@ -81,6 +81,30 @@
       "hit": true,
       "score_observed_at_utc": "2026-11-20T21:43:03.533265+00:00",
       "score_source_sha256": "a8ba3a342f8401b1fe27945b9c6a139d0ea3487fb175ec91a672da1e94c516b9"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570454",
+      "league": "laliga",
+      "home": "Athletic Club",
+      "away": "Espanyol",
+      "kickoff_utc": "2026-11-20T20:00:00+00:00",
+      "frozen_at_utc": "2026-11-14T15:34:02.971494+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "10f53d4d211d5d0fbd301985ebb9464d82287df97c618ce36e9511905b242cbe",
+      "p": [
+        0.5596066648638154,
+        0.25356260705675954,
+        0.18683072807942505
+      ],
+      "pick": "1",
+      "score": [
+        0,
+        1
+      ],
+      "actual": "2",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-21T07:20:45.834619+00:00",
+      "score_source_sha256": "fe1f9d827f2994a7512c1b992381632867d4cf0ca6547e0b464511de358e138c"
     }
   ]
 }
