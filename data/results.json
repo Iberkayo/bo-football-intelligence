@@ -4,10 +4,10 @@
   "publication_state": "VERIFIED_PAPER_SETTLEMENT",
   "model_version": "ridge_poisson_api_silver_v1",
   "source": "PUBLISHED_PREDICTIONS_PLUS_SILVER_FINAL_SCORES",
-  "exported_at_utc": "2026-11-22T06:46:16.528601+00:00",
+  "exported_at_utc": "2026-11-23T18:06:21.536099+00:00",
   "summary": {
-    "total": 54,
-    "hits": 27
+    "total": 83,
+    "hits": 47
   },
   "results": [
     {
@@ -1305,6 +1305,702 @@
       "hit": true,
       "score_observed_at_utc": "2026-11-22T06:16:38.335273+00:00",
       "score_source_sha256": "b52dce323e7efc54dc3377d1e0f94ce3527d73701b80d7d5f94b1520291d5e65"
+    },
+    {
+      "fixture_id": "api-football:fixture:1584468",
+      "league": "superlig",
+      "home": "Erzurumspor FK",
+      "away": "Göztepe",
+      "kickoff_utc": "2026-11-22T10:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "ad4a1f3c42bb7ee1c57b15296508b877f820570cd47395a3a9419b7e45fb5d36",
+      "p": [
+        0.2930535043732857,
+        0.2695800802056977,
+        0.4373664154210169
+      ],
+      "pick": "2",
+      "score": [
+        0,
+        1
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:16.113096+00:00",
+      "score_source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552232",
+      "league": "eredivisie",
+      "home": "Twente",
+      "away": "Willem II",
+      "kickoff_utc": "2026-11-22T11:15:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "1919488efe9bcff0c8911c737747a2eb9789e74fd899204100b7639ad08d5fff",
+      "p": [
+        0.775553328524241,
+        0.14240203899691264,
+        0.08204463247884677
+      ],
+      "pick": "1",
+      "score": [
+        2,
+        1
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:22.302843+00:00",
+      "score_source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550201",
+      "league": "seriea",
+      "home": "Juventus",
+      "away": "Venezia",
+      "kickoff_utc": "2026-11-22T11:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "2841d6d839eae5de8b6a670753d5ca13bb7442e336391e4429d01e01d4569d8d",
+      "p": [
+        0.6673452961867002,
+        0.21613332204505545,
+        0.11652138176824442
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:19.251562+00:00",
+      "score_source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15"
+    },
+    {
+      "fixture_id": "api-football:fixture:1563264",
+      "league": "championship",
+      "home": "Burnley",
+      "away": "Blackburn",
+      "kickoff_utc": "2026-11-22T12:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "4bf4aa8dc1de632450b66737c934dbb48998c888864f2601d1c7ee2399b7631d",
+      "p": [
+        0.6096122953019162,
+        0.24247476887941846,
+        0.14791293581866533
+      ],
+      "pick": "1",
+      "score": [
+        2,
+        2
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:25.052783+00:00",
+      "score_source_sha256": "2314da7e0ffabf7008709d0c0fe437702d7d3c0d6095fb33b008305ce7c9b87d"
+    },
+    {
+      "fixture_id": "api-football:fixture:1558681",
+      "league": "jupiler",
+      "home": "SK Beveren",
+      "away": "Gent",
+      "kickoff_utc": "2026-11-22T12:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "5a70543e133a34b7f4b9cc2da590489c79a4a5a6090ac7fdab2abd52d487ff68",
+      "p": [
+        0.2731679624627634,
+        0.22710403431085194,
+        0.4997280032263849
+      ],
+      "pick": "2",
+      "score": [
+        1,
+        0
+      ],
+      "actual": "1",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:26.218344+00:00",
+      "score_source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570455",
+      "league": "laliga",
+      "home": "Barcelona",
+      "away": "Villarreal",
+      "kickoff_utc": "2026-11-22T13:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "9aba6bdef2d2344014aa06e13f4c5be7e4a86e14ffaa1944d7dd12476caad6c6",
+      "p": [
+        0.7290019934956786,
+        0.14277600135652546,
+        0.12822200514779594
+      ],
+      "pick": "1",
+      "score": [
+        3,
+        2
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:18.339858+00:00",
+      "score_source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf"
+    },
+    {
+      "fixture_id": "api-football:fixture:1584471",
+      "league": "superlig",
+      "home": "Kasımpaşa",
+      "away": "Alanyaspor",
+      "kickoff_utc": "2026-11-22T13:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "cbad4570d754d0407fed889493ae2dd8e44f4c0e452989974b5658b6239c4b2b",
+      "p": [
+        0.454059490786852,
+        0.2501920905805002,
+        0.2957484186326478
+      ],
+      "pick": "1",
+      "score": [
+        2,
+        1
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:16.113096+00:00",
+      "score_source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406"
+    },
+    {
+      "fixture_id": "api-football:fixture:1584473",
+      "league": "superlig",
+      "home": "Konyaspor",
+      "away": "Beşiktaş",
+      "kickoff_utc": "2026-11-22T13:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "c12af3f02af382f45013cea71d3ea2ca01df76cca4d2f951366e81fa0b598e1b",
+      "p": [
+        0.28465500152836304,
+        0.27023965514406656,
+        0.44510534332757007
+      ],
+      "pick": "2",
+      "score": [
+        2,
+        4
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:16.113096+00:00",
+      "score_source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552225",
+      "league": "eredivisie",
+      "home": "Ajax",
+      "away": "ADO Den Haag",
+      "kickoff_utc": "2026-11-22T13:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "5d8e6eeac694b7a3f065035f0484cbbb76e2323b0a08649278e463632b3f35e9",
+      "p": [
+        0.7787000069988873,
+        0.1305850178508121,
+        0.09071497515029987
+      ],
+      "pick": "1",
+      "score": [
+        3,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:22.302843+00:00",
+      "score_source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552230",
+      "league": "eredivisie",
+      "home": "Sparta Rotterdam",
+      "away": "AZ Alkmaar",
+      "kickoff_utc": "2026-11-22T13:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "0ec433f71e6b7dbc0fa0cf2c9e4dacc35976b0efbc78b7f581049ba213d36fd5",
+      "p": [
+        0.2738532637271658,
+        0.24526089704906923,
+        0.48088583922376493
+      ],
+      "pick": "2",
+      "score": [
+        1,
+        5
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:22.302843+00:00",
+      "score_source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550199",
+      "league": "seriea",
+      "home": "Bologna",
+      "away": "Udinese",
+      "kickoff_utc": "2026-11-22T14:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "af66a9b9ebff3a516a47be82bdd54593442ba07f8713b763f0e875857c746c6b",
+      "p": [
+        0.5528232382746876,
+        0.2444567546747714,
+        0.20272000705054077
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        1
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:19.251562+00:00",
+      "score_source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550206",
+      "league": "seriea",
+      "home": "Sassuolo",
+      "away": "Genoa",
+      "kickoff_utc": "2026-11-22T14:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "df4b6ccdf5d62f0cdcb0b3c5d93fa5052d8d9609c0f89296dfa1965099740677",
+      "p": [
+        0.35491920497537177,
+        0.2614673942149884,
+        0.3836134008096394
+      ],
+      "pick": "2",
+      "score": [
+        0,
+        2
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:19.251562+00:00",
+      "score_source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552825",
+      "league": "ligue1",
+      "home": "Paris FC",
+      "away": "Angers",
+      "kickoff_utc": "2026-11-22T14:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "1b72ec5f6b35092b6a525485e25d05c92afe1e1bd04b3b44b0329fc655f93f04",
+      "p": [
+        0.5844547549161296,
+        0.23915410556330682,
+        0.1763911395205636
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:21.369509+00:00",
+      "score_source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1557472",
+      "league": "premier",
+      "home": "Hull City",
+      "away": "Brighton",
+      "kickoff_utc": "2026-11-22T14:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "8348d113f7935dcf5b27754c4bededd8fd45cdebddb4fe6262fe8015cecd79cd",
+      "p": [
+        0.3645826837012037,
+        0.2719450557728372,
+        0.3634722605259593
+      ],
+      "pick": "1",
+      "score": [
+        2,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:17.369957+00:00",
+      "score_source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a"
+    },
+    {
+      "fixture_id": "api-football:fixture:1575224",
+      "league": "bundesliga",
+      "home": "FC Augsburg",
+      "away": "FSV Mainz 05",
+      "kickoff_utc": "2026-11-22T14:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "8907fab54d6dbc3424faf57c4f36e424c0be4a254c84c9b55135357170c15811",
+      "p": [
+        0.3838320456197821,
+        0.256439539305205,
+        0.35972841507501285
+      ],
+      "pick": "1",
+      "score": [
+        3,
+        1
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:20.549099+00:00",
+      "score_source_sha256": "8092d990fe16d76aef57110faa6b380d48131ec5ed41d6a64ac132cb734e9239"
+    },
+    {
+      "fixture_id": "api-football:fixture:1558685",
+      "league": "jupiler",
+      "home": "Kortrijk",
+      "away": "Union St. Gilloise",
+      "kickoff_utc": "2026-11-22T15:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "f54857354caf6f4d304b2e5caf14519cd71b05c2112b19b1baa5212a2d297bb4",
+      "p": [
+        0.08899821756204689,
+        0.17810389003640315,
+        0.7328978924015502
+      ],
+      "pick": "2",
+      "score": [
+        0,
+        1
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:26.218344+00:00",
+      "score_source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570459",
+      "league": "laliga",
+      "home": "Racing Santander",
+      "away": "Real Sociedad",
+      "kickoff_utc": "2026-11-22T15:15:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "28ef0d2aa8d54dec9b39dc9711ac47839b94b64f8d4359ee4358c87242e41155",
+      "p": [
+        0.31501600471526986,
+        0.22357839260742865,
+        0.4614056026773015
+      ],
+      "pick": "2",
+      "score": [
+        3,
+        2
+      ],
+      "actual": "1",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:18.339858+00:00",
+      "score_source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552227",
+      "league": "eredivisie",
+      "home": "GO Ahead Eagles",
+      "away": "Fortuna Sittard",
+      "kickoff_utc": "2026-11-22T15:45:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "6f4748554e72fc398eed4c43df15555c9353f81efeb3d853ef381b305484cb8a",
+      "p": [
+        0.5329565511915967,
+        0.2311488639800402,
+        0.2358945848283626
+      ],
+      "pick": "1",
+      "score": [
+        0,
+        1
+      ],
+      "actual": "2",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:22.302843+00:00",
+      "score_source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1584474",
+      "league": "superlig",
+      "home": "Trabzonspor",
+      "away": "Eyüpspor",
+      "kickoff_utc": "2026-11-22T16:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "12ae40ba7d8910cce0cc08c8f0d5ba4753c0b6cdbe32bfa04894bf8f61985432",
+      "p": [
+        0.6583663835353155,
+        0.19734245548980645,
+        0.14429116097487846
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:16.113096+00:00",
+      "score_source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552821",
+      "league": "ligue1",
+      "home": "Lorient",
+      "away": "Rennes",
+      "kickoff_utc": "2026-11-22T16:15:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "f9d985884762e0271b20ee46a3f664356e3842221a1cf34a5f80bde50e1d80c8",
+      "p": [
+        0.3462423764424338,
+        0.23505142783435828,
+        0.41870619572320783
+      ],
+      "pick": "2",
+      "score": [
+        1,
+        1
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:21.369509+00:00",
+      "score_source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1557473",
+      "league": "premier",
+      "home": "Liverpool",
+      "away": "Manchester United",
+      "kickoff_utc": "2026-11-22T16:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "8faeafabab91102514a5bdf4dca8c3da7c01e0b09e8427a6b3f49546dd43d775",
+      "p": [
+        0.6054728671203576,
+        0.2047945804426326,
+        0.18973255243701034
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:17.369957+00:00",
+      "score_source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a"
+    },
+    {
+      "fixture_id": "api-football:fixture:1575227",
+      "league": "bundesliga",
+      "home": "Werder Bremen",
+      "away": "Hamburger SV",
+      "kickoff_utc": "2026-11-22T16:30:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "cea606270a5944aa3c854bafd7a3343a0fe6052b503b714b65fb0d553f8cb0c7",
+      "p": [
+        0.48667290911448907,
+        0.2454704864331704,
+        0.26785660445234033
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:20.549099+00:00",
+      "score_source_sha256": "8092d990fe16d76aef57110faa6b380d48131ec5ed41d6a64ac132cb734e9239"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550197",
+      "league": "seriea",
+      "home": "AC Milan",
+      "away": "Frosinone",
+      "kickoff_utc": "2026-11-22T17:00:00+00:00",
+      "frozen_at_utc": "2026-11-15T17:09:04.453716+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "d7bbc47508934374b69440714820e8cdeef9279f2c1a227ada0336f7987b29de",
+      "p": [
+        0.6451502651368706,
+        0.18640634634450753,
+        0.1684433885186221
+      ],
+      "pick": "1",
+      "score": [
+        5,
+        1
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:19.251562+00:00",
+      "score_source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15"
+    },
+    {
+      "fixture_id": "api-football:fixture:1558680",
+      "league": "jupiler",
+      "home": "Anderlecht",
+      "away": "OH Leuven",
+      "kickoff_utc": "2026-11-22T17:30:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "6cb2692b0436d96fdb749c78aa6f5fd02c0b5e52ed827ebbe5076baf8fc58ee0",
+      "p": [
+        0.6255475649934942,
+        0.2226451642551666,
+        0.15180727075133923
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:26.218344+00:00",
+      "score_source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570458",
+      "league": "laliga",
+      "home": "Osasuna",
+      "away": "Malaga",
+      "kickoff_utc": "2026-11-22T17:30:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "f364ce3d6e9b090da10b8dae62ac0e2e83d75fdacbedd55956ef676e4d584612",
+      "p": [
+        0.5823079158909124,
+        0.23569339858024962,
+        0.18199868552883738
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:18.339858+00:00",
+      "score_source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf"
+    },
+    {
+      "fixture_id": "api-football:fixture:1558687",
+      "league": "jupiler",
+      "home": "Lommel United",
+      "away": "Standard Liege",
+      "kickoff_utc": "2026-11-22T18:15:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "097cf63c5879afee7501cab76bf40c6a5ae4d6e1443d59c63eb2d84d59bd6ba8",
+      "p": [
+        0.544596409512589,
+        0.2620160678117784,
+        0.19338752267563308
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        2
+      ],
+      "actual": "2",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:26.218344+00:00",
+      "score_source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550198",
+      "league": "seriea",
+      "home": "Atalanta",
+      "away": "Inter",
+      "kickoff_utc": "2026-11-22T19:45:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "5cc7b20453ad78c2e464aa0d085707dd0abaf9ab694ae7e15af92b04b0611d7c",
+      "p": [
+        0.27033397588398606,
+        0.232286533639726,
+        0.49737949047628777
+      ],
+      "pick": "2",
+      "score": [
+        4,
+        4
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:19.251562+00:00",
+      "score_source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15"
+    },
+    {
+      "fixture_id": "api-football:fixture:1552822",
+      "league": "ligue1",
+      "home": "Marseille",
+      "away": "Le Mans",
+      "kickoff_utc": "2026-11-22T19:45:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "947901e3b51117b179be5264922a6b27180732ed8b876e20256aed07208c3363",
+      "p": [
+        0.6693277753744403,
+        0.1781913051003993,
+        0.1524809195251603
+      ],
+      "pick": "1",
+      "score": [
+        2,
+        3
+      ],
+      "actual": "2",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-23T17:43:21.369509+00:00",
+      "score_source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570456",
+      "league": "laliga",
+      "home": "Getafe",
+      "away": "Atletico Madrid",
+      "kickoff_utc": "2026-11-22T20:00:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "c5579f51452a77e56c6f07bd007c16c4e7bb4389e21613c93b2d27ff714ed995",
+      "p": [
+        0.2313330696726767,
+        0.2838405951483211,
+        0.4848263351790025
+      ],
+      "pick": "2",
+      "score": [
+        0,
+        3
+      ],
+      "actual": "2",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-23T17:43:18.339858+00:00",
+      "score_source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf"
     }
   ]
 }

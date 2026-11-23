@@ -3,8 +3,8 @@
   "publication_state": "VERIFIED_PAPER_LEDGER_EXPORT",
   "source": "BO_BET_APPEND_ONLY_LEDGER",
   "model_version": "ridge_poisson_api_silver_v1",
-  "fixtures_snapshot_at_utc": "2026-11-22T06:16:48.162858+00:00",
-  "exported_at_utc": "2026-11-22T06:46:16.191716+00:00",
+  "fixtures_snapshot_at_utc": "2026-11-23T17:43:26.218344+00:00",
+  "exported_at_utc": "2026-11-23T18:06:21.190800+00:00",
   "forecasts": [
     {
       "fixture_id": "api-football:fixture:1575221",
@@ -3217,6 +3217,804 @@
       "expected_goals": [
         1.6698989979479657,
         0.8324077893969972
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1584477",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T10:30:00+00:00",
+      "record_sha256": "32a7f0b4bd36c7bcdd6240b6955bd37bbf4984785301c6888bb1cc5df533eb7a",
+      "source_snapshot_id": "e6185fac119d4631993716683eb7cfd5",
+      "source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.48612966844701316,
+        0.25837918245459685,
+        0.25549114909839
+      ],
+      "expected_goals": [
+        1.5113520512620193,
+        1.0197523132563828
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552235",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T11:15:00+00:00",
+      "record_sha256": "07940cceda1ce83f510abbc8d1be6887103a33064b5a54770099c84be97f93bc",
+      "source_snapshot_id": "98b74e8fd65643109793030d1a35e3c4",
+      "source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.24254932304991222,
+        0.21683826803361644,
+        0.5406124089164713
+      ],
+      "expected_goals": [
+        1.2741058558037086,
+        1.991638901023531
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1550215",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T11:30:00+00:00",
+      "record_sha256": "b57fd7bf9b07e5910c297834b8ca600973ddc30e08b861f98a1795642a3512d2",
+      "source_snapshot_id": "f2619672684c4e92a9954058a24b6b34",
+      "source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.2973758198692549,
+        0.2570237266686615,
+        0.4456004534620834
+      ],
+      "expected_goals": [
+        1.1652517445680568,
+        1.4856644780637014
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557480",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T12:00:00+00:00",
+      "record_sha256": "910f6f95d969bddcf43237501f0674273d1c6d6ba823d784d5e5f87487d692df",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.2453581394767593,
+        0.25721943373011125,
+        0.4974224267931294
+      ],
+      "expected_goals": [
+        0.9907636413656805,
+        1.5279974533216565
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1563295",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T12:00:00+00:00",
+      "record_sha256": "e0fe10d05e6eb669e55baa38d6cdae4fc07fdca6fccc7a1253562aceff2bc4c0",
+      "source_snapshot_id": "5b45e3d37af1411690492cdfe75a5ae2",
+      "source_sha256": "2314da7e0ffabf7008709d0c0fe437702d7d3c0d6095fb33b008305ce7c9b87d",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.5190901847129162,
+        0.24218124702491436,
+        0.23872856826216896
+      ],
+      "expected_goals": [
+        1.679114822506668,
+        1.057370060696095
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1558696",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T12:30:00+00:00",
+      "record_sha256": "38bef893c6046f17a32b2e1f7fddbc92b282887e50ecaaa24c63aaccc29a525a",
+      "source_snapshot_id": "a0f46dcef3e34f1d9ac3ee97036fc908",
+      "source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.345392962686793,
+        0.24812567074372383,
+        0.4064813665694833
+      ],
+      "expected_goals": [
+        1.3714793891461283,
+        1.5079545539892458
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1570472",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T13:00:00+00:00",
+      "record_sha256": "c3142e75c25f6393a33cb39406eeed80a8be1e4c25cdf6ed9945e9fd07ce99ed",
+      "source_snapshot_id": "8aa5a3a2c11447f1940d2494878c4cb5",
+      "source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.43432138329389886,
+        0.27446149053501756,
+        0.29121712617108364
+      ],
+      "expected_goals": [
+        1.3354734695342527,
+        1.040595921875649
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1584478",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T13:00:00+00:00",
+      "record_sha256": "9ba2138d0952fabb930a505fa66fdf77ddd6cfaddd46a5a9965a1665aba8229a",
+      "source_snapshot_id": "e6185fac119d4631993716683eb7cfd5",
+      "source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.28853448912213686,
+        0.2560589477837506,
+        0.45540656309411237
+      ],
+      "expected_goals": [
+        1.1441451238448608,
+        1.50519395491251
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552237",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T13:30:00+00:00",
+      "record_sha256": "91785ff3666326fb7f9a649cbf1dde1648afdcf1a26758ece9c8ed018dc56005",
+      "source_snapshot_id": "98b74e8fd65643109793030d1a35e3c4",
+      "source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.5538185886708604,
+        0.2093123487283855,
+        0.23686906260075383
+      ],
+      "expected_goals": [
+        2.1002690483666187,
+        1.3189870619362467
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552241",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T13:30:00+00:00",
+      "record_sha256": "35a55d9e2accd95755bd76a493e3a3d67f6130d9ace034920e0415738b0131cd",
+      "source_snapshot_id": "98b74e8fd65643109793030d1a35e3c4",
+      "source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.3863358228504964,
+        0.24615473665877213,
+        0.367509440490731
+      ],
+      "expected_goals": [
+        1.4870590210482357,
+        1.4446897492661042
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1550213",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:00:00+00:00",
+      "record_sha256": "e06cf2b9d0eb68b4e1063f941a3cc3f53f93e9bc3a5775df17ebdc2ef8af5203",
+      "source_snapshot_id": "f2619672684c4e92a9954058a24b6b34",
+      "source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.20068291639205968,
+        0.22451338011700758,
+        0.5748037034909327
+      ],
+      "expected_goals": [
+        1.0055487376954755,
+        1.864424497293402
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552829",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:00:00+00:00",
+      "record_sha256": "e0306f8c300a21c0d9e4cffbe026f1b5d860d9d9148c50ab6a2e86030138707b",
+      "source_snapshot_id": "82c3faf10e1c466a9bcbe934a8050559",
+      "source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.27917451900389373,
+        0.23323217390607606,
+        0.48759330709002996
+      ],
+      "expected_goals": [
+        1.2854760243872276,
+        1.767349742737832
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557478",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:05:00+00:00",
+      "record_sha256": "6f05b593054c53fba5b06f0a6532845d16c1af9c0a54b0eebfe4fee65c467252",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.42255169513827584,
+        0.23151007575522609,
+        0.34593822910649824
+      ],
+      "expected_goals": [
+        1.7123015417824252,
+        1.5316551803557457
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557479",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:05:00+00:00",
+      "record_sha256": "34a3f19cb82779b544902e75a1642772218164fc6f756b4eb25d4610fd13b800",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.34732559229155247,
+        0.2871474471395493,
+        0.36552696056889844
+      ],
+      "expected_goals": [
+        1.1081960581646335,
+        1.1447197343762496
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557481",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:05:00+00:00",
+      "record_sha256": "26a1c0937824365d66720fc3235440e860bd238d98c10e15d4429d2e90eeaa35",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.39417363152529306,
+        0.25600636318974823,
+        0.34982000528495877
+      ],
+      "expected_goals": [
+        1.4150455988960247,
+        1.318250418075607
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557486",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:05:00+00:00",
+      "record_sha256": "0a44459502380d395dbcdef3ec6781469e9bd78c2dad639030986b9fbfcd7111",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.36138975131926926,
+        0.26851397875525723,
+        0.3700962699254735
+      ],
+      "expected_goals": [
+        1.2528947244303328,
+        1.2712380711107802
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1575233",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T14:30:00+00:00",
+      "record_sha256": "a7a4b8cbfc0eba6b508e8281f27c53a0c7e2defd7b04b22386c1c36e1c4c2053",
+      "source_snapshot_id": "2758310abe334a39b59b90b1ec92881d",
+      "source_sha256": "8092d990fe16d76aef57110faa6b380d48131ec5ed41d6a64ac132cb734e9239",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.2986234965486719,
+        0.2318833142357037,
+        0.46949318921562444
+      ],
+      "expected_goals": [
+        1.3707696359871007,
+        1.7697222734684803
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1558689",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T15:00:00+00:00",
+      "record_sha256": "5407320e51309ead516217062e1df9975d347f4cec456e7030cf386fcfd265b1",
+      "source_snapshot_id": "a0f46dcef3e34f1d9ac3ee97036fc908",
+      "source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.3723767705246603,
+        0.26784691943153865,
+        0.3597763100438011
+      ],
+      "expected_goals": [
+        1.280607455783728,
+        1.254011865980913
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1570465",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T15:15:00+00:00",
+      "record_sha256": "3fe0a6218fe2d0987a1e62df715ecd2668ed3aac18546e4ba481481529092dbf",
+      "source_snapshot_id": "8aa5a3a2c11447f1940d2494878c4cb5",
+      "source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.17937185119895335,
+        0.19279695581619322,
+        0.6278311929848528
+      ],
+      "expected_goals": [
+        1.1371760738805314,
+        2.2667581907924568
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552242",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T15:45:00+00:00",
+      "record_sha256": "6625274e1b0d8fc011b47f55e2347a2f03cf2a749c5579beb0e540b2fac91a32",
+      "source_snapshot_id": "98b74e8fd65643109793030d1a35e3c4",
+      "source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.2238986739175149,
+        0.2215310671185613,
+        0.5545702589639241
+      ],
+      "expected_goals": [
+        1.1420681661477876,
+        1.9183697552399597
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1584479",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T16:00:00+00:00",
+      "record_sha256": "7c25c5fd0aebc1ec3b2a5964930a87568e5d757fe8e977cf240c04f4c994fe89",
+      "source_snapshot_id": "e6185fac119d4631993716683eb7cfd5",
+      "source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.8035994902014992,
+        0.12925487127483135,
+        0.06714563852366971
+      ],
+      "expected_goals": [
+        2.7278864772074742,
+        0.6751505161646082
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552836",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T16:15:00+00:00",
+      "record_sha256": "014ea69195489b2e401406f5852802e985e9efedf9b325fb946f1dd221d677c8",
+      "source_snapshot_id": "82c3faf10e1c466a9bcbe934a8050559",
+      "source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.4085179597162326,
+        0.24643668004872735,
+        0.34504536023504007
+      ],
+      "expected_goals": [
+        1.5276993179484948,
+        1.3851586749179121
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1557477",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T16:30:00+00:00",
+      "record_sha256": "b54117ae5884c151001ab332b2a511b82f643dc115c820d3572e8a106b37c590",
+      "source_snapshot_id": "31759da50fe045fdb270d0fc0b44edd4",
+      "source_sha256": "1c6d3f581e30a68a8e8a49e88ee7066f7967d6dbd03b025cf7fa1625e12a298a",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.47387916959135223,
+        0.25877537619224267,
+        0.26734545421640515
+      ],
+      "expected_goals": [
+        1.4989217178069145,
+        1.057693155187981
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1575232",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T16:30:00+00:00",
+      "record_sha256": "952566f739690a43009446dfbbc468515d76fad1e7f924a9018ff3339c86a8d2",
+      "source_snapshot_id": "2758310abe334a39b59b90b1ec92881d",
+      "source_sha256": "8092d990fe16d76aef57110faa6b380d48131ec5ed41d6a64ac132cb734e9239",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.5155170814200699,
+        0.2154867097027328,
+        0.2689962088771971
+      ],
+      "expected_goals": [
+        2.0164555713692884,
+        1.4132573702139775
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1550207",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T17:00:00+00:00",
+      "record_sha256": "ee92ebe355b8db60bbbad1a9a8ce590aff9ad93fb6557a076cbdfce70b025ead",
+      "source_snapshot_id": "f2619672684c4e92a9954058a24b6b34",
+      "source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.7201170742722318,
+        0.17515590506119155,
+        0.1047270206665759
+      ],
+      "expected_goals": [
+        2.2492954236027773,
+        0.7247361543860469
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1558695",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T17:30:00+00:00",
+      "record_sha256": "aa92a5e747166c26124fc267133079cf44b3ee089d8abfe0c46300cdc4ec451e",
+      "source_snapshot_id": "a0f46dcef3e34f1d9ac3ee97036fc908",
+      "source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.16474926610437748,
+        0.22173699185952073,
+        0.6135137420361019
+      ],
+      "expected_goals": [
+        0.8386699549827529,
+        1.8535340426859708
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1570464",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T17:30:00+00:00",
+      "record_sha256": "859f061365394a8d0b079f0c9e4a36f3c2445720bd9a8a770c741485016b1011",
+      "source_snapshot_id": "8aa5a3a2c11447f1940d2494878c4cb5",
+      "source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.38513392825684634,
+        0.23458280676108834,
+        0.38028326498206483
+      ],
+      "expected_goals": [
+        1.6018293263401353,
+        1.5904883012056716
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1575550",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T18:00:00+00:00",
+      "record_sha256": "8f2ebabe100368adeac1c370c17a42effb5db349741cf4d93baf8a14b46c6f02",
+      "source_snapshot_id": "03be99149a014220878152aecf77fb0f",
+      "source_sha256": "e5d2510c63b238a9f6dee671e7b8cc21f5b444095ceac4989e3e8f7852801a55",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.46085749838766144,
+        0.24783141228236258,
+        0.29131108932997574
+      ],
+      "expected_goals": [
+        1.587388784228801,
+        1.2114745997871723
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1558694",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T18:15:00+00:00",
+      "record_sha256": "e2558f52d365c59071380219916901d3adde62fd2180e478c278db73cce16ac1",
+      "source_snapshot_id": "a0f46dcef3e34f1d9ac3ee97036fc908",
+      "source_sha256": "f6e7a9cb6fc947e67f7ac4959cf43d07b5ecf0e770fd428f40e7f55d559cfeb5",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.6497023156085249,
+        0.20911999000313308,
+        0.14117769438834238
+      ],
+      "expected_goals": [
+        1.9490859680239825,
+        0.7768054370119005
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1575230",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T18:30:00+00:00",
+      "record_sha256": "6f64c3e833d3552f1d76a8c60f6baf11ad62195e8139d434796333966d5d30f1",
+      "source_snapshot_id": "2758310abe334a39b59b90b1ec92881d",
+      "source_sha256": "8092d990fe16d76aef57110faa6b380d48131ec5ed41d6a64ac132cb734e9239",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.4089822113298024,
+        0.23526012132945648,
+        0.35575766734074143
+      ],
+      "expected_goals": [
+        1.6444834783209785,
+        1.5204541418726274
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552239",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T19:00:00+00:00",
+      "record_sha256": "2a6e673f6b2ccee6f142d8b3a9d1041dab93250b87ddf4fb59babe30bf71de64",
+      "source_snapshot_id": "98b74e8fd65643109793030d1a35e3c4",
+      "source_sha256": "57943e2881b8916e5fcc86eb1931e60306091cb2c9fe6eaa49b368590c7c07cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.3702952977253788,
+        0.23393128494561946,
+        0.3957734173290021
+      ],
+      "expected_goals": [
+        1.5729499747804205,
+        1.6326381017196097
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1550209",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T19:45:00+00:00",
+      "record_sha256": "9e51a292dcd2d91cee35105fd3834ceec91ea8be1c6e56f8a17519fdb47a3257",
+      "source_snapshot_id": "f2619672684c4e92a9954058a24b6b34",
+      "source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.35825859946103167,
+        0.2848170690848349,
+        0.3569243314541331
+      ],
+      "expected_goals": [
+        1.1437279615449532,
+        1.1410347272200434
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1552833",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T19:45:00+00:00",
+      "record_sha256": "d02be59d9ecc6948bad8dd72353f0abf5526f5c31ceaae38ff9b0c1ea2838b78",
+      "source_snapshot_id": "82c3faf10e1c466a9bcbe934a8050559",
+      "source_sha256": "8ec4563c95a30018832a8a596cfba5325d8a009845e8909449b81ac0498219cc",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.41004634713330373,
+        0.2342107529265821,
+        0.3557428999401141
+      ],
+      "expected_goals": [
+        1.6583041440255768,
+        1.5313131583856743
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1570471",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T20:00:00+00:00",
+      "record_sha256": "b799ffa52fa7da13d5a6c20cccdb1275aaa31fe612c11237f9991a8546ca0c63",
+      "source_snapshot_id": "8aa5a3a2c11447f1940d2494878c4cb5",
+      "source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.5103668962597848,
+        0.2447599328623212,
+        0.24487317087789318
+      ],
+      "expected_goals": [
+        1.6505486131117135,
+        1.0647920458581601
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1575549",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-29T20:30:00+00:00",
+      "record_sha256": "48000e278cbd21dcd52209181e41021b5a0df62ffca92e6ccd5523f2a9249cc1",
+      "source_snapshot_id": "03be99149a014220878152aecf77fb0f",
+      "source_sha256": "e5d2510c63b238a9f6dee671e7b8cc21f5b444095ceac4989e3e8f7852801a55",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.38027977933320223,
+        0.26038071916637034,
+        0.3593395015004272
+      ],
+      "expected_goals": [
+        1.352304257930054,
+        1.3071657213239152
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1584481",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-30T16:00:00+00:00",
+      "record_sha256": "9e67b65f0b0186953a08f5dd6bfdafd4e08554dd351d7dc8f0d4ece5dd6746fd",
+      "source_snapshot_id": "e6185fac119d4631993716683eb7cfd5",
+      "source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.403384709227273,
+        0.25005690369810235,
+        0.346558387074624
+      ],
+      "expected_goals": [
+        1.484406653253242,
+        1.3581901885141443
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1550212",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-30T17:30:00+00:00",
+      "record_sha256": "4331ffc000b36e001916654b83df2a59e116992169f226b379c11615a9211fee",
+      "source_snapshot_id": "f2619672684c4e92a9954058a24b6b34",
+      "source_sha256": "ed6c012b0f937b9dadc60b7bc44073cf0533b4f8c97e6e2e22afaa638d9d1b15",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.1505845073756638,
+        0.22311770761212457,
+        0.6262977850122111
+      ],
+      "expected_goals": [
+        0.7569015475309699,
+        1.8172349326005044
+      ]
+    },
+    {
+      "fixture_id": "api-football:fixture:1584476",
+      "model_version": "ridge_poisson_api_silver_v1",
+      "horizon": "EARLY_24_TO_168H",
+      "frozen_at_utc": "2026-11-23T18:00:40.466092+00:00",
+      "kickoff_utc": "2026-11-30T18:00:00+00:00",
+      "record_sha256": "52d1642bb69327a6c350b5995ecfa7d74967100215020782dce81e23873d1214",
+      "source_snapshot_id": "e6185fac119d4631993716683eb7cfd5",
+      "source_sha256": "90e5226ee95ba2ad56c5b7ceffca79c0ba36b53b1999d47b7281d8fc9a83e406",
+      "base_training_sha256": "171aa524fefb6b33aa1cdb16e755a2063ebfcb3dbab74bc68d5634a8fbe2f490",
+      "training_rows": 11944,
+      "p": [
+        0.266956628860322,
+        0.2407039628613002,
+        0.4923394082783779
+      ],
+      "expected_goals": [
+        1.1783123533672246,
+        1.6854359675080461
       ]
     }
   ]
