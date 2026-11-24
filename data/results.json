@@ -4,10 +4,10 @@
   "publication_state": "VERIFIED_PAPER_SETTLEMENT",
   "model_version": "ridge_poisson_api_silver_v1",
   "source": "PUBLISHED_PREDICTIONS_PLUS_SILVER_FINAL_SCORES",
-  "exported_at_utc": "2026-11-23T18:06:21.536099+00:00",
+  "exported_at_utc": "2026-11-24T06:01:44.799480+00:00",
   "summary": {
-    "total": 83,
-    "hits": 47
+    "total": 87,
+    "hits": 49
   },
   "results": [
     {
@@ -2001,6 +2001,102 @@
       "hit": true,
       "score_observed_at_utc": "2026-11-23T17:43:18.339858+00:00",
       "score_source_sha256": "90bf004e05f2eeb3150c90671cddd7b35f67bba934ce143935fdd114515bbbdf"
+    },
+    {
+      "fixture_id": "api-football:fixture:1584467",
+      "league": "superlig",
+      "home": "Başakşehir",
+      "away": "Çorum FK",
+      "kickoff_utc": "2026-11-23T17:00:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "6ecce6aaf5e3bb046d94cd435083f77e170c13d7435b72e37f42161d2ef3c1e7",
+      "p": [
+        0.533588204258889,
+        0.20850661956153813,
+        0.25790517617957237
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        2
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-24T05:30:04.031728+00:00",
+      "score_source_sha256": "37e7972b470e942264830b19192c8d505e9316110e0064b84edfa91c7f4fafdc"
+    },
+    {
+      "fixture_id": "api-football:fixture:1550203",
+      "league": "seriea",
+      "home": "Monza",
+      "away": "Fiorentina",
+      "kickoff_utc": "2026-11-23T19:45:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "c8dd45868b9eede940c98ccc47dffe4f2e9762381a5df660fa9de25f063c2f7e",
+      "p": [
+        0.23722247497778412,
+        0.24101180500050834,
+        0.5217657200217077
+      ],
+      "pick": "2",
+      "score": [
+        3,
+        0
+      ],
+      "actual": "1",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-24T05:30:06.091434+00:00",
+      "score_source_sha256": "db36fa7e2cffdee8223b80d92d4cf5f9705b6a0a21217732532fda42129cc072"
+    },
+    {
+      "fixture_id": "api-football:fixture:1557469",
+      "league": "premier",
+      "home": "Brentford",
+      "away": "Everton",
+      "kickoff_utc": "2026-11-23T20:00:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "e4582a6fa7021afa7cc51caba0f9d6220ee6f574f69302d01e4a0fd392cefc67",
+      "p": [
+        0.45367198964894884,
+        0.2666697649608615,
+        0.2796582453901898
+      ],
+      "pick": "1",
+      "score": [
+        4,
+        0
+      ],
+      "actual": "1",
+      "hit": true,
+      "score_observed_at_utc": "2026-11-24T05:30:04.672005+00:00",
+      "score_source_sha256": "ab45fa09031e770c97bf3769a1d2bd3971de11b416dea86d0399b94eba7c75a2"
+    },
+    {
+      "fixture_id": "api-football:fixture:1570457",
+      "league": "laliga",
+      "home": "Levante",
+      "away": "Elche",
+      "kickoff_utc": "2026-11-23T20:00:00+00:00",
+      "frozen_at_utc": "2026-11-18T17:17:35.930770+00:00",
+      "horizon": "EARLY_24_TO_168H",
+      "record_sha256": "80550b68d555387164436a72a5bd0b210ad014197da5b473a3af4a1336eb4bd5",
+      "p": [
+        0.44820994708304074,
+        0.24254536733866228,
+        0.30924468557829704
+      ],
+      "pick": "1",
+      "score": [
+        1,
+        1
+      ],
+      "actual": "X",
+      "hit": false,
+      "score_observed_at_utc": "2026-11-24T05:30:05.357479+00:00",
+      "score_source_sha256": "fcffb587705a1f4635e569313c71210b6c7091338db0dbf7fba2cb8ac68b329c"
     }
   ]
 }
